@@ -6,7 +6,7 @@ server:
 spring:
   datasource:
     password: password
-    url: jdbc:postgresql://localhost:5400/registration
+    url: jdbc:postgresql://localhost:5400/fsj
     username: postgres
   jpa:
     hibernate:

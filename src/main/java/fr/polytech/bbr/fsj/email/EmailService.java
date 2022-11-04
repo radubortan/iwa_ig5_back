@@ -3,7 +3,6 @@ package fr.polytech.bbr.fsj.email;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
@@ -27,7 +26,7 @@ public class EmailService implements EmailSender{
             MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, "utf-8");
             helper.setText(email, true);
             helper.setTo(to);
-            helper.setSubject("Confirm your account");
+            helper.setSubject("Activate your account");
             helper.setFrom("hello@fsj.com");
             mailSender.send(mimeMessage);
         } catch (MessagingException e) {

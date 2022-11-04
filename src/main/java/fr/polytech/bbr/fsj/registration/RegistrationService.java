@@ -34,10 +34,10 @@ public class RegistrationService {
         ));
 
         //TODO: change to hosted link
-        String link = "http://localhost:8080/api/registration/confirm?token="+token;
+        String link = "http://localhost:8080/registration/confirm?token="+token;
         emailSender.send(request.getEmail(), buildEmail(request.getEmail(), link ));
 
-        return token;
+        return "Registration successful";
     }
 
     @Transactional
@@ -45,22 +45,22 @@ public class RegistrationService {
         ConfirmationToken confirmationToken = confirmationTokenService
                 .getToken(token)
                 .orElseThrow(() ->
-                        new IllegalStateException("token not found"));
+                        new IllegalStateException("Token not found"));
 
         if (confirmationToken.getConfirmedAt() != null) {
-            throw new IllegalStateException("email already confirmed");
+            throw new IllegalStateException("Email already confirmed");
         }
 
         LocalDateTime expiredAt = confirmationToken.getExpiresAt();
 
         if (expiredAt.isBefore(LocalDateTime.now())) {
-            throw new IllegalStateException("token expired");
+            throw new IllegalStateException("Token expired");
         }
 
         confirmationTokenService.setConfirmedAt(token);
         appUserService.enableAppUser(
                 confirmationToken.getAppUser().getEmail());
-        return "confirmed";
+        return "Account activated";
     }
 
     private String buildEmail(String name, String link) {
