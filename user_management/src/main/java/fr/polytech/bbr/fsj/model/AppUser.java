@@ -1,42 +1,36 @@
-package fr.polytech.bbr.fsj.appuser;
+package fr.polytech.bbr.fsj.model;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
+import java.util.List;
 
-@Getter
-@Setter
-@EqualsAndHashCode
-@NoArgsConstructor
+import static javax.persistence.GenerationType.AUTO;
+
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class AppUser implements UserDetails {
-
     @Id
-    @SequenceGenerator(
-            name = "user_sequence",
-            sequenceName = "user_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue (
-            strategy = GenerationType.SEQUENCE,
-            generator = "user_sequence"
-    )
+    @GeneratedValue(strategy = AUTO)
     private Long id;
     private String email;
     private String password;
     private String phoneNumber;
     private Boolean locked = false;
     private Boolean enabled = false;
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Collection<Role> roles = new ArrayList<>();
 
-    public AppUser(String email, String password, String phoneNumber) {
+    public AppUser(Long id, String email, String password, String phoneNumber) {
         this.email = email;
         this.password = password;
         this.phoneNumber = phoneNumber;
@@ -44,8 +38,9 @@ public class AppUser implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        SimpleGrantedAuthority authority = new SimpleGrantedAuthority("USER");
-        return Collections.singletonList(authority);
+        List<GrantedAuthority> list = new ArrayList<>();
+        this.roles.forEach(role -> list.add(new SimpleGrantedAuthority(role.toString())));
+        return list;
     }
 
     @Override

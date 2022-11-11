@@ -1,7 +1,7 @@
 package fr.polytech.bbr.fsj.registration.token;
 
 
-import fr.polytech.bbr.fsj.appuser.AppUser;
+import fr.polytech.bbr.fsj.model.AppUser;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

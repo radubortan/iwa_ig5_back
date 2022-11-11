@@ -1,10 +1,10 @@
 package fr.polytech.bbr.fsj.registration;
 
-import fr.polytech.bbr.fsj.appuser.AppUser;
-import fr.polytech.bbr.fsj.appuser.AppUserService;
 import fr.polytech.bbr.fsj.email.EmailSender;
+import fr.polytech.bbr.fsj.model.AppUser;
 import fr.polytech.bbr.fsj.registration.token.ConfirmationToken;
 import fr.polytech.bbr.fsj.registration.token.ConfirmationTokenService;
+import fr.polytech.bbr.fsj.service.AppUserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,27 +20,35 @@ public class RegistrationService {
     private final ConfirmationTokenService confirmationTokenService;
     private final EmailSender emailSender;
 
+    //sign up user
     public String register(RegistrationRequest request) {
+        //check if email is valid
         boolean isValidEmail = emailValidator.test(request.getEmail());
 
         if(!isValidEmail) {
             throw new IllegalStateException("Email not valid");
         }
 
-        String token = appUserService.signUpUser(new AppUser(
+        // add user to the database and get back the activation token
+        String token = appUserService.saveUser(new AppUser(
+                null,
                 request.getEmail(),
                 request.getPassword(),
                 request.getPhoneNumber()
         ));
 
         //TODO: change to hosted link
-        String link = "http://localhost:8080/registration/confirm?token="+token;
+        //generate activation link
+        String link = "http://localhost:8080/api/registration/confirm?token="+token;
+
+        //send the email that includes the activation link
         emailSender.send(request.getEmail(), buildEmail(request.getEmail(), link ));
 
         return "Registration successful";
     }
 
     @Transactional
+    //activates the account when the link in the activation email is clicked
     public String confirmToken(String token) {
         ConfirmationToken confirmationToken = confirmationTokenService
                 .getToken(token)
@@ -63,6 +71,7 @@ public class RegistrationService {
         return "Account activated";
     }
 
+    //html for the email
     private String buildEmail(String name, String link) {
         return "<div style=\"font-family:Helvetica,Arial,sans-serif;font-size:16px;margin:0;color:#0b0c0c\">\n" +
                 "\n" +
