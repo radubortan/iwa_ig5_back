@@ -2,8 +2,6 @@ package fr.polytech.bbr.fsj.service;
 
 import fr.polytech.bbr.fsj.model.AppUser;
 import fr.polytech.bbr.fsj.model.Role;
-import fr.polytech.bbr.fsj.registration.token.ConfirmationToken;
-import fr.polytech.bbr.fsj.registration.token.ConfirmationTokenService;
 import fr.polytech.bbr.fsj.repository.AppUserRepo;
 import fr.polytech.bbr.fsj.repository.RoleRepo;
 import lombok.RequiredArgsConstructor;
@@ -16,11 +14,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -29,7 +25,6 @@ public class AppUserService implements UserDetailsService {
     private final AppUserRepo appUserRepo;
     private final RoleRepo roleRepo;
     private final PasswordEncoder passwordEncoder;
-    private final ConfirmationTokenService confirmationTokenService;
 
     @Override
     //logs in a user
@@ -45,8 +40,8 @@ public class AppUserService implements UserDetailsService {
         return new User(user.getEmail(), user.getPassword(), authorities);
     }
 
-    //adds user to the database and generates the activation token
-    public String saveUser(AppUser user, String role) {
+    //adds user to the database
+    public void saveUser(AppUser user, String role) {
         //checks if email isn't taken
         boolean userExists = appUserRepo.findByEmail(user.getEmail()) != null;
 
@@ -62,18 +57,6 @@ public class AppUserService implements UserDetailsService {
         //save user to the database
         appUserRepo.save(user);
         addRoleToAppUser(user.getEmail(), role);
-
-        //generate activate token
-        String token = UUID.randomUUID().toString();
-        ConfirmationToken confirmationToken = new ConfirmationToken(
-                token, LocalDateTime.now(), LocalDateTime.now().plusMinutes(15), user
-        );
-
-        //save token to the database
-        confirmationTokenService.saveConfirmationToken(confirmationToken);
-
-        //return the token
-        return token;
     }
 
     public Role saveRole(Role role) {

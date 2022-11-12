@@ -18,10 +18,4 @@ public class RegistrationController {
     public String registerCandidate(@RequestBody RegistrationRequestCandidate request) {
         return registrationService.registerCandidate(request);
     }
-
-    //confirms account
-    @GetMapping(path = "confirm")
-    public String confirm(@RequestParam("token") String token) {
-        return registrationService.confirmToken(token);
-    }
 }

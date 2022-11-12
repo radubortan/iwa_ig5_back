@@ -36,18 +36,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         CustomAuthenticationFilter customAuthenticationFilter = new CustomAuthenticationFilter(authenticationManagerBean());
         customAuthenticationFilter.setFilterProcessesUrl("/api/login");
 
-
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
         //routes that can be accessed without being logged in
         http.authorizeRequests().antMatchers("/api/login/**", "/api/token/refresh/**", "/api/registration/**").permitAll();
 
-        //route only for users
-        http.authorizeRequests().antMatchers(GET, "/api/user/**").hasAnyAuthority("ROLE_CANDIDATE");
-
-        //route only for admin
-        http.authorizeRequests().antMatchers(POST, "/api/user/save/**").hasAnyAuthority("ROLE_EMPLOYER");
+        http.authorizeRequests().antMatchers(GET, "/api/users/**").hasAuthority("ROLE_EMPLOYER");
+        http.authorizeRequests().antMatchers(GET, "/api/user/**").hasAuthority("ROLE_CANDIDATE");
 
         //all other requests require user to be authenticated
         http.authorizeRequests().anyRequest().authenticated();
