@@ -46,7 +46,7 @@ public class AppUserService implements UserDetailsService {
     }
 
     //adds user to the database and generates the activation token
-    public String saveUser(AppUser user) {
+    public String saveUser(AppUser user, String role) {
         //checks if email isn't taken
         boolean userExists = appUserRepo.findByEmail(user.getEmail()) != null;
 
@@ -61,6 +61,7 @@ public class AppUserService implements UserDetailsService {
 
         //save user to the database
         appUserRepo.save(user);
+        addRoleToAppUser(user.getEmail(), role);
 
         //generate activate token
         String token = UUID.randomUUID().toString();

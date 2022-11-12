@@ -20,20 +20,16 @@ import static javax.persistence.GenerationType.AUTO;
 @AllArgsConstructor
 public class AppUser implements UserDetails {
     @Id
-    @GeneratedValue(strategy = AUTO)
-    private Long id;
     private String email;
     private String password;
-    private String phoneNumber;
     private Boolean locked = false;
     private Boolean enabled = false;
     @ManyToMany(fetch = FetchType.EAGER)
     private Collection<Role> roles = new ArrayList<>();
 
-    public AppUser(Long id, String email, String password, String phoneNumber) {
+    public AppUser(String email, String password) {
         this.email = email;
         this.password = password;
-        this.phoneNumber = phoneNumber;
     }
 
     @Override

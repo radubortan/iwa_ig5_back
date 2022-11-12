@@ -1,7 +1,11 @@
 package fr.polytech.bbr.fsj;
 
+import fr.polytech.bbr.fsj.model.Role;
+import fr.polytech.bbr.fsj.service.AppUserService;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class FsjApplication {
@@ -10,16 +14,12 @@ public class FsjApplication {
 		SpringApplication.run(FsjApplication.class, args);
 	}
 
-/*	@Bean
-	CommandLineRunner run(AppUserServiceImplementation appUserServiceImplementation) {
+	@Bean
+	CommandLineRunner run(AppUserService appUserService) {
 		return args -> {
-			appUserServiceImplementation.saveRole(new Role(null, "ROLE_USER"));
-			appUserServiceImplementation.saveRole(new Role(null, "ROLE_ADMIN"));
-
-			appUserServiceImplementation.saveUser(new AppUser(null, "bortanradu@gmail.com", "password", "0603515270"));
-
-			appUserServiceImplementation.addRoleToAppUser("bortanradu@gmail.com", "ROLE_USER");
+			appUserService.saveRole(new Role(null, "ROLE_EMPLOYER"));
+			appUserService.saveRole(new Role(null, "ROLE_CANDIDATE"));
 		};
-	}*/
+	}
 
 }

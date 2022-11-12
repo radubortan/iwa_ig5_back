@@ -38,24 +38,6 @@ public class AppUserController {
         return ResponseEntity.ok().body(appUserService.getAppUsers());
     }
 
-    @PostMapping("/user/save")
-    public ResponseEntity<String> saveAppUser(@RequestBody AppUser user) {
-        URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/user/save").toUriString());
-        return ResponseEntity.created(uri).body(appUserService.saveUser(user));
-    }
-
-    @PostMapping("/role/save")
-    public ResponseEntity<Role> saveRole(@RequestBody Role role) {
-        URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/role/save").toUriString());
-        return ResponseEntity.created(uri).body(appUserService.saveRole(role));
-    }
-
-    @PostMapping("/role/addToUser")
-    public ResponseEntity<?> addRoleToUser(@RequestBody RoleToUserForm form) {
-        appUserService.addRoleToAppUser(form.getEmail(), form.getRoleName());
-        return ResponseEntity.ok().build();
-    }
-
     @GetMapping("/token/refresh")
     public void refreshToken(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String authorisationHeader = request.getHeader(AUTHORIZATION);
