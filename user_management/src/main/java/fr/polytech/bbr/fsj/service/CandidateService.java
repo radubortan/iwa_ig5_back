@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -15,16 +14,20 @@ import java.util.Optional;
 public class CandidateService {
     private final CandidateRepo candidateRepo;
 
-    //adds user to the database and generates the activation token
+    //adds user to the database
     public void saveCandidate(Candidate candidate) {
         candidateRepo.save(candidate);
     }
 
-    public Optional<Candidate> getCandidate(Long id) {
-        return candidateRepo.findById(id);
+    public Candidate getCandidateById(Long id) {
+        return candidateRepo.findById(id).orElse(null);
     }
 
     public List<Candidate> getCandidates() {
         return candidateRepo.findAll();
+    }
+
+    public Candidate updateCandidate(Candidate candidate) {
+        return candidateRepo.save(candidate);
     }
 }

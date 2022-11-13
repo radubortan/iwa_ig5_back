@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -20,11 +19,15 @@ public class EmployerService {
         employerRepo.save(employer);
     }
 
-    public Optional<Employer> getEmployer(Long id) {
-        return employerRepo.findById(id);
+    public Employer getEmployerById(Long id) {
+        return employerRepo.findById(id).orElse(null);
     }
 
-    public List<Employer> getCandidates() {
+    public List<Employer> getEmployers() {
         return employerRepo.findAll();
+    }
+
+    public Employer updateEmployer(Employer employer) {
+        return employerRepo.save(employer);
     }
 }

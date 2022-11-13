@@ -31,7 +31,7 @@ public class RegistrationService {
 
         Long id = UUID.randomUUID().getMostSignificantBits() & Long.MAX_VALUE;
 
-        // add user to the database and get back the activation token
+        // add user to the database
         appUserService.saveUser(new AppUser(
                 id,
                 request.getEmail(),
@@ -53,7 +53,7 @@ public class RegistrationService {
 
         Long id = UUID.randomUUID().getMostSignificantBits() & Long.MAX_VALUE;
 
-        // add user to the database and get back the activation token
+        // add user to the database
         appUserService.saveUser(new AppUser(
                 id,
                 request.getEmail(),

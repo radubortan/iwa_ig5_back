@@ -16,7 +16,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import static org.springframework.http.HttpMethod.GET;
-import static org.springframework.http.HttpMethod.POST;
 
 @Configuration
 @EnableWebSecurity
@@ -40,7 +39,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
         //routes that can be accessed without being logged in
-        http.authorizeRequests().antMatchers("/api/login/**", "/api/token/refresh/**", "/api/registration/**").permitAll();
+        http.authorizeRequests().antMatchers("/api/login/**", "/api/registration/**").permitAll();
 
         http.authorizeRequests().antMatchers(GET, "/api/users/**").hasAuthority("ROLE_EMPLOYER");
         http.authorizeRequests().antMatchers(GET, "/api/user/**").hasAuthority("ROLE_CANDIDATE");

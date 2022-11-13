@@ -30,7 +30,7 @@ public class CustomAuthorisationFilter extends OncePerRequestFilter {
     //makes sure that only requests that provide a jwt are allowed
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         //if we're on these routes, no need to provide a jwt
-        if (request.getServletPath().equals("/api/login") || request.getServletPath().equals("/api/token/refresh") || request.getServletPath().equals("/api/registration")) {
+        if (request.getServletPath().equals("/api/login") || request.getServletPath().equals("/api/registration")) {
             filterChain.doFilter(request, response);
         } else {
             //get the authorization header
