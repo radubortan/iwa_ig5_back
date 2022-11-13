@@ -13,7 +13,8 @@ public class FileUploader {
     public FileUploader() {
     }
 
-    public void uploadFile(String nameFile, String contentType, long size, InputStream inputStream) throws IOException, NoSuchAlgorithmException, InvalidKeyException {
+    public boolean uploadFile(String nameFile, String contentType, long size, InputStream inputStream) throws IOException, NoSuchAlgorithmException, InvalidKeyException {
+        boolean succeed = false;
         try {
             MinioClient minioClient = MinioClient.builder()
                     .endpoint("http://127.0.0.1:9000")
@@ -35,9 +36,12 @@ public class FileUploader {
 
 
             System.out.println("Upload OK !");
+            succeed = true;
         } catch (MinioException e) {
             System.out.println("Error occurred: " + e);
             System.out.println("HTTP trace: " + e.httpTrace());
+            succeed = false;
         }
+        return succeed;
     }
 }
