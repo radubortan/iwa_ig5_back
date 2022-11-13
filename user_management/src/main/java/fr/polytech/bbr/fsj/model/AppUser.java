@@ -12,14 +12,13 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import static javax.persistence.GenerationType.AUTO;
-
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class AppUser implements UserDetails {
     @Id
+    private Long id;
     private String email;
     private String password;
     private Boolean locked = false;
@@ -27,7 +26,8 @@ public class AppUser implements UserDetails {
     @ManyToMany(fetch = FetchType.EAGER)
     private Collection<Role> roles = new ArrayList<>();
 
-    public AppUser(String email, String password) {
+    public AppUser(Long id, String email, String password) {
+        this.id = id;
         this.email = email;
         this.password = password;
     }

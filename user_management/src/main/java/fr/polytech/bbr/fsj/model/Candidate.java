@@ -4,8 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
@@ -14,7 +13,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class Candidate {
     @Id
-    private String email;
+    private Long id;
     private String lastName;
     private String firstName;
     private LocalDate birthday;
@@ -22,8 +21,8 @@ public class Candidate {
     private String linkCv = "";
     private String cvKeywords = "";
 
-    public Candidate(String email, String lastName, String firstName, LocalDate birthday, String phoneNumber) {
-        this.email = email;
+    public Candidate(Long id, String lastName, String firstName, LocalDate birthday, String phoneNumber) {
+        this.id = id;
         this.lastName = lastName;
         this.firstName = firstName;
         this.birthday = birthday;

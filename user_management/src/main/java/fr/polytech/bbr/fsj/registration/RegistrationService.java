@@ -9,6 +9,8 @@ import fr.polytech.bbr.fsj.service.EmployerService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 @AllArgsConstructor
 public class RegistrationService {
@@ -27,13 +29,16 @@ public class RegistrationService {
             throw new IllegalStateException("Email not valid");
         }
 
+        Long id = UUID.randomUUID().getMostSignificantBits() & Long.MAX_VALUE;
+
         // add user to the database and get back the activation token
         appUserService.saveUser(new AppUser(
+                id,
                 request.getEmail(),
                 request.getPassword()
         ), "ROLE_EMPLOYER");
 
-        employerService.saveEmployer(new Employer(request.getEmail(), request.getCompanyName(), request.getAddress(), request.getPhoneNumber()));
+        employerService.saveEmployer(new Employer(id, request.getCompanyName(), request.getAddress(), request.getPhoneNumber()));
         return "Registration successful";
     }
 
@@ -46,13 +51,16 @@ public class RegistrationService {
             throw new IllegalStateException("Email not valid");
         }
 
+        Long id = UUID.randomUUID().getMostSignificantBits() & Long.MAX_VALUE;
+
         // add user to the database and get back the activation token
         appUserService.saveUser(new AppUser(
+                id,
                 request.getEmail(),
                 request.getPassword()
         ), "ROLE_CANDIDATE");
 
-        candidateService.saveCandidate(new Candidate(request.getEmail(), request.getLastName(), request.getFirstName(), request.getBirthday(), request.getPhoneNumber()));
+        candidateService.saveCandidate(new Candidate(id, request.getLastName(), request.getFirstName(), request.getBirthday(), request.getPhoneNumber()));
         return "Registration successful";
     }
 }

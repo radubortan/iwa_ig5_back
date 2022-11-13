@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -19,8 +20,8 @@ public class CandidateService {
         candidateRepo.save(candidate);
     }
 
-    public Candidate getCandidate(String email) {
-        return candidateRepo.findByEmail(email);
+    public Optional<Candidate> getCandidate(Long id) {
+        return candidateRepo.findById(id);
     }
 
     public List<Candidate> getCandidates() {
