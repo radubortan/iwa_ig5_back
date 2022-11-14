@@ -52,8 +52,10 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
                 .sign(algorithm);
 
         Map<String, String> data = new HashMap<>();
+
         data.put("accessToken", accessToken);
         data.put("accountType", user.getAuthorities().iterator().next().toString());
+
         response.setContentType(APPLICATION_JSON_VALUE);
         new ObjectMapper().writeValue(response.getOutputStream(), data);
     }

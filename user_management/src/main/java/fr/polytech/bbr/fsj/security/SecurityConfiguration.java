@@ -44,6 +44,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         //all authenticated users can view employers and candidates
         http.authorizeRequests().antMatchers(GET, "/api/users/employer/**", "/api/users/candidate/**").authenticated();
 
+        //for employer and candidates to get their own ids
+        http.authorizeRequests().antMatchers(GET, "/api/users/employer/id").hasAuthority("ROLE_EMPLOYER");
+        http.authorizeRequests().antMatchers(GET, "/api/users/candidate/id").hasAuthority("ROLE_CANDIDATE");
+
         //updating an employer is only accessible to an employer
         http.authorizeRequests().antMatchers(PUT, "/api/users/employer/{id}/update").hasAuthority("ROLE_EMPLOYER");
 

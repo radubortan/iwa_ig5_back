@@ -72,6 +72,56 @@ public class AppUserController {
         }
     }
 
+    //for an employer to get their id
+    @GetMapping("/users/employer/id")
+    public ResponseEntity<String> getEmployerId(@RequestHeader(AUTHORIZATION) String jwt) {
+        try {
+            String token = jwt.substring("Bearer ".length());
+            Algorithm algorithm = Algorithm.HMAC256("fsj-Secret".getBytes());
+            JWTVerifier verifier = JWT.require(algorithm).build();
+            DecodedJWT decodedJWT = verifier.verify(token);
+
+            String email = decodedJWT.getSubject();
+            String[] roles = decodedJWT.getClaim("roles").asArray(String.class);
+
+            //id corresponding to the employer
+            Long id = appUserService.getAppUser(email).getId();
+
+            //we make sure that the requester is an employer
+            if (roles[0].equals("ROLE_EMPLOYER")) {
+                return ResponseEntity.ok().body(id.toString());
+            }
+            throw new Exception();
+        } catch (Exception e) {
+            return ResponseEntity.status(BAD_REQUEST).body(null);
+        }
+    }
+
+    //for a candidate to get their id
+    @GetMapping("/users/candidate/id")
+    public ResponseEntity<String> getCandidateId(@RequestHeader(AUTHORIZATION) String jwt) {
+        try {
+            String token = jwt.substring("Bearer ".length());
+            Algorithm algorithm = Algorithm.HMAC256("fsj-Secret".getBytes());
+            JWTVerifier verifier = JWT.require(algorithm).build();
+            DecodedJWT decodedJWT = verifier.verify(token);
+
+            String email = decodedJWT.getSubject();
+            String[] roles = decodedJWT.getClaim("roles").asArray(String.class);
+
+            //id corresponding to the candidate
+            Long id = appUserService.getAppUser(email).getId();
+
+            //we make sure that the requester is a candidate
+            if (roles[0].equals("ROLE_CANDIDATE")) {
+                return ResponseEntity.ok().body(id.toString());
+            }
+            throw new Exception();
+        } catch (Exception e) {
+            return ResponseEntity.status(BAD_REQUEST).body(null);
+        }
+    }
+
     //get info of an employer by their id
     @GetMapping("/users/employer/{id}")
     public ResponseEntity<Employer> getEmployerById(@PathVariable Long id) {
