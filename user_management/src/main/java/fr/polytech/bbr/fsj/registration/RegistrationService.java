@@ -21,12 +21,18 @@ public class RegistrationService {
     private final EmailValidator emailValidator;
 
     //register an employer
-    public String registerEmployer(RegistrationRequestEmployer request) {
+    public String registerEmployer(RegistrationRequestEmployer request) throws IllegalArgumentException {
         //check if email is valid
         boolean isValidEmail = emailValidator.test(request.getEmail());
 
-        if(!isValidEmail) {
-            throw new IllegalStateException("Email not valid");
+        boolean paramsProvided = request.getEmail() != null
+                && request.getPassword() != null
+                && request.getCompanyName() != null
+                && request.getAddress() != null
+                && request.getPhoneNumber() != null;
+
+        if(!isValidEmail || !paramsProvided) {
+            throw new IllegalArgumentException("Bad information provided");
         }
 
         Long id = UUID.randomUUID().getMostSignificantBits() & Long.MAX_VALUE;
@@ -43,12 +49,19 @@ public class RegistrationService {
     }
 
     //register a candidate
-    public String registerCandidate(RegistrationRequestCandidate request) {
+    public String registerCandidate(RegistrationRequestCandidate request) throws IllegalArgumentException {
         //check if email is valid
         boolean isValidEmail = emailValidator.test(request.getEmail());
 
-        if(!isValidEmail) {
-            throw new IllegalStateException("Email not valid");
+        boolean paramsProvided = request.getEmail() != null
+                && request.getPassword() != null
+                && request.getLastName() != null
+                && request.getFirstName() != null
+                && request.getBirthday() != null
+                && request.getPhoneNumber() != null;
+
+        if(!isValidEmail || !paramsProvided) {
+            throw new IllegalArgumentException("Bad information provided");
         }
 
         Long id = UUID.randomUUID().getMostSignificantBits() & Long.MAX_VALUE;

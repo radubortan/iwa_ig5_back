@@ -16,6 +16,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import static org.springframework.http.HttpMethod.GET;
+import static org.springframework.http.HttpMethod.PUT;
 
 @Configuration
 @EnableWebSecurity
@@ -34,20 +35,25 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         //setting the route for the login page
         CustomAuthenticationFilter customAuthenticationFilter = new CustomAuthenticationFilter(authenticationManagerBean());
         customAuthenticationFilter.setFilterProcessesUrl("/api/login");
-
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
         //routes that can be accessed without being logged in
         http.authorizeRequests().antMatchers("/api/login/**", "/api/registration/**").permitAll();
 
-        http.authorizeRequests().antMatchers(GET, "/api/users/**").hasAuthority("ROLE_EMPLOYER");
-        http.authorizeRequests().antMatchers(GET, "/api/user/**").hasAuthority("ROLE_CANDIDATE");
+        //all authenticated users can view employers and candidates
+        http.authorizeRequests().antMatchers(GET, "/api/users/employer/**", "/api/users/candidate/**").authenticated();
+
+        //updating an employer is only accessible to an employer
+        http.authorizeRequests().antMatchers(PUT, "/api/users/employer/{id}/update").hasAuthority("ROLE_EMPLOYER");
+
+        //updating a candidate is only accessible to a candidate
+        http.authorizeRequests().antMatchers(PUT, "/api/users/candidate/{id}/update").hasAuthority("ROLE_CANDIDATE");
 
         //all other requests require user to be authenticated
         http.authorizeRequests().anyRequest().authenticated();
-        http.addFilter(customAuthenticationFilter);
 
+        http.addFilter(customAuthenticationFilter);
         http.addFilterBefore(new CustomAuthorisationFilter(), UsernamePasswordAuthenticationFilter.class);
     }
 
