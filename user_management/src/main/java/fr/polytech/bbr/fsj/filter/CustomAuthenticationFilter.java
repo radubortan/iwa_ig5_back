@@ -3,6 +3,7 @@ package fr.polytech.bbr.fsj.filter;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.json.JSONObject;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -32,10 +33,25 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(email, password);
-        return authenticationManager.authenticate(authenticationToken);
+        try {
+            //get the body of the request
+            String receivedBody = request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
+
+            //transform the body into JSON
+            JSONObject jsonObject = new JSONObject(receivedBody);
+
+            //extract email and password out of the body
+            String email = jsonObject.get("email").toString();
+            String password = jsonObject.get("password").toString();
+
+            UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(email, password);
+            return authenticationManager.authenticate(authenticationToken);
+
+        }
+        catch (Exception err){
+            System.out.println(err);
+        }
+        throw null;
     }
 
     @Override
