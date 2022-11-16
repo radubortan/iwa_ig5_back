@@ -18,7 +18,7 @@ public class FileUploader {
         try {
             MinioClient minioClient = MinioClient.builder()
                     .endpoint("http://127.0.0.1:9000")
-                    .credentials("eYRsoaxwyKhPI6Ju", "bbz2QBog0uqo45O31taWhfnmDY3EzkSH")
+                    .credentials("fb2EfCpRCZahpGZL", "Fg5EkoVTSOqCqBHNcY9TecpIWRMWrkiW")
                     .build();
 
             boolean found = minioClient.bucketExists(BucketExistsArgs.builder().bucket("test-vincent").build());
