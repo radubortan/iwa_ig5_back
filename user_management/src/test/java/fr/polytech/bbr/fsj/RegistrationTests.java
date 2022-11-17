@@ -26,7 +26,7 @@ class RegistrationTests {
     void shouldSignUpEmployerTest() throws Exception{
         RequestBuilder request = MockMvcRequestBuilders.post("/api/registration/employer")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"email\": \"email@gmail.com\", \"password\": \"password\", \"phoneNumber\": \"06\", \"lastName\": \"Johnson\", \"firstName\": \"Alex\", \"birthday\": \"2000-01-01\" }");
+                .content("{\"email\": \"z\", \"password\": \"password\", \"phoneNumber\": \"06\", \"lastName\": \"Johnson\", \"firstName\": \"Alex\", \"birthday\": \"2000-01-01\" }");
 
         mockMvc.perform(request).andExpect(MockMvcResultMatchers.status().isCreated());
     }

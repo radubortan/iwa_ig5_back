@@ -6,6 +6,7 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import fr.polytech.bbr.fsj.model.Candidate;
 import fr.polytech.bbr.fsj.model.Employer;
+import fr.polytech.bbr.fsj.model.Role;
 import fr.polytech.bbr.fsj.service.AppUserService;
 import fr.polytech.bbr.fsj.service.CandidateService;
 import fr.polytech.bbr.fsj.service.EmployerService;
@@ -132,6 +133,12 @@ public class AppUserController {
     @GetMapping("/users/candidate/{id}")
     public ResponseEntity<Candidate> getCandidateById(@PathVariable Long id) {
         return ResponseEntity.ok().body(candidateService.getCandidateById(id));
+    }
+
+    //get the role of a user by their id
+    @GetMapping("/users/{id}/role")
+    public ResponseEntity<Role> getEmployerRole(@PathVariable Long id) {
+        return ResponseEntity.ok().body(appUserService.getRole(id));
     }
 }
 

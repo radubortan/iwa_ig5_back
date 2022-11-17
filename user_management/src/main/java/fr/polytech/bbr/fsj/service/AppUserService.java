@@ -63,6 +63,12 @@ public class AppUserService implements UserDetailsService {
         return roleRepo.save(role);
     }
 
+    //get user role by the user id
+    public Role getRole(Long id) {
+        AppUser appUser = appUserRepo.findById(id).orElse(null);
+        return appUser.getRoles().iterator().next();
+    }
+
     public void addRoleToAppUser(String email, String roleName) {
         AppUser user = appUserRepo.findByEmail(email);
         Role role = roleRepo.findByName(roleName);
