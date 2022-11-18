@@ -33,4 +33,7 @@ public class JobOffer {
 
     @Column(name = "publishing_date")
     private Date publishingDate;
+
+    @Column(name = "id_employer")
+    private Long idEmployer;
 }
