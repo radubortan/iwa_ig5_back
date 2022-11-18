@@ -14,6 +14,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
 
@@ -139,6 +141,11 @@ public class AppUserController {
     @GetMapping("/users/{id}/role")
     public ResponseEntity<Role> getEmployerRole(@PathVariable Long id) {
         return ResponseEntity.ok().body(appUserService.getRole(id));
+    }
+
+    @GetMapping("/users/candidates")
+    public ResponseEntity<List<Candidate>> getCandidates() {
+        return ResponseEntity.ok().body(candidateService.getCandidates());
     }
 }
 
