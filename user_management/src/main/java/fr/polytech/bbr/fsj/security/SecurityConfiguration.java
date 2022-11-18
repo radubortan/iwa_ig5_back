@@ -39,7 +39,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
         //routes that can be accessed without being logged in
-        http.authorizeRequests().antMatchers("/api/login/**", "/api/registration/**").permitAll();
+        http.authorizeRequests().antMatchers("/api/login/**", "/api/registration/**", "/api/users/candidates").permitAll();
 
         //all authenticated users can view employers and candidates
         http.authorizeRequests().antMatchers(GET, "/api/users/employer/**", "/api/users/candidate/**").authenticated();
