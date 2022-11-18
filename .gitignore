@@ -1,3 +1,10 @@
+### Local Configuration ###
+.env
+
+job_offer_management/.gradle
+job_offer_management/build
+
+
 HELP.md
 .gradle
 build/
