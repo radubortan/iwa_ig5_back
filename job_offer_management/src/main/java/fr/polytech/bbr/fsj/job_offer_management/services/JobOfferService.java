@@ -30,4 +30,8 @@ public class JobOfferService {
         JobOffer savedJobOffer = jobOfferRepository.save(jobOffer);
         return savedJobOffer;
     }
+
+    public Iterable<JobOffer> getJobOffersByIdEmployer(Long idEmployer){
+        return jobOfferRepository.findJobOffersByIdEmployer(idEmployer);
+    }
 }

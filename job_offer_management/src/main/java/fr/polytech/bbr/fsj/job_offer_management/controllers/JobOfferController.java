@@ -19,7 +19,7 @@ public class JobOfferController {
      * @return - An Optional object of JobOffer full filled
      */
     @GetMapping("/job-offers/{id}")
-    public Optional<JobOffer> getJobOffer(@RequestParam final Long id) {
+    public Optional<JobOffer> getJobOffer(@PathVariable("id") final Long id) {
         return jobOfferService.getJobOffer(id);
     }
 
@@ -37,7 +37,7 @@ public class JobOfferController {
      * @return - Void
      */
     @DeleteMapping ("/job-offers/{id}")
-    public void deleteJobOffer(@RequestParam final Long id) {
+    public void deleteJobOffer(@PathVariable("id") final Long id) {
         jobOfferService.deleteJobOffer(id);
     }
 
@@ -47,7 +47,15 @@ public class JobOfferController {
      */
     @PostMapping ("/job-offers")
     public JobOffer saveJobOffer(@RequestBody final JobOffer jobOffer) {
-        System.out.println(jobOffer);
         return jobOfferService.saveJobOffer(jobOffer);
+    }
+
+    /**
+     * Read - Get all job offers by employer id
+     * @return - An Iterable object of JobOffer full filled
+     */
+    @GetMapping("/job-offers/employer/{idEmployer}")
+    public Iterable<JobOffer> getJobOffersByIdEmployer(@PathVariable("idEmployer") final Long idEmployer){
+        return jobOfferService.getJobOffersByIdEmployer(idEmployer);
     }
 }
