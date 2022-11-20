@@ -58,4 +58,14 @@ public class JobOfferController {
     public Iterable<JobOffer> getJobOffersByIdEmployer(@PathVariable("idEmployer") final Long idEmployer){
         return jobOfferService.getJobOffersByIdEmployer(idEmployer);
     }
+
+    /**
+     * Write - Update fields from job offer by id
+     * @return - Void
+     */
+    @PutMapping("/job-offers/{id}")
+    public void updateJobOffer(@PathVariable("id") final Long id, @RequestBody final JobOffer jobOffer){
+        System.out.println(id);
+        jobOfferService.updateJobOffer(id, jobOffer);
+    }
 }
