@@ -34,4 +34,18 @@ public class JobOfferService {
     public Iterable<JobOffer> getJobOffersByIdEmployer(Long idEmployer){
         return jobOfferRepository.findJobOffersByIdEmployer(idEmployer);
     }
+
+    public void updateJobOffer(Long idJobOffer, JobOffer newJobOffer){
+        jobOfferRepository.updateJobOffer(
+                idJobOffer,
+                newJobOffer.getTitle(),
+                newJobOffer.getDescription(),
+                newJobOffer.getBeginningDate(),
+                newJobOffer.getEndingDate(),
+                newJobOffer.getPlace(),
+                newJobOffer.getNumberPositions(),
+                newJobOffer.getRemuneration(),
+                newJobOffer.getPublishingDate(),
+                newJobOffer.getIdEmployer());
+    }
 }

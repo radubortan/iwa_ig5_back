@@ -9,5 +9,4 @@ class JobOfferManagementApplicationTests {
     @Test
     void contextLoads() {
     }
-
 }
