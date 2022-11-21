@@ -77,4 +77,20 @@ public class FileUploader {
 
         return stat;
     }
+
+    public Boolean deleteFile(String objectName) {
+        Boolean delete = false;
+        try {
+            minioClient.removeObject(
+                    RemoveObjectArgs.builder()
+                            .bucket("test-vincent")
+                            .object(objectName)
+                            .build()
+            );
+            delete = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return delete;
+    }
 }
