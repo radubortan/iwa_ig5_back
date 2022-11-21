@@ -5,8 +5,6 @@ import fr.polytech.bbr.fsj.FileUploader;
 
 import io.minio.StatObjectResponse;
 import org.springframework.core.io.InputStreamResource;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
