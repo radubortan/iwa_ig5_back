@@ -4,6 +4,7 @@ import fr.polytech.bbr.fsj.job_offer_management.models.JobOffer;
 import fr.polytech.bbr.fsj.job_offer_management.repositories.JobOfferRepository;
 import fr.polytech.bbr.fsj.job_offer_management.services.JobOfferService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -13,6 +14,13 @@ public class JobOfferController {
 
     @Autowired
     private JobOfferService jobOfferService;
+
+    @Autowired
+    private KafkaTemplate<String, JobOffer> kafkaTemplate;
+
+    public JobOfferController(KafkaTemplate<String, JobOffer> kafkaTemplate){
+        this.kafkaTemplate = kafkaTemplate;
+    }
 
     /**
      * Read - Get job offer by id
@@ -47,6 +55,7 @@ public class JobOfferController {
      */
     @PostMapping ("/job-offers")
     public JobOffer saveJobOffer(@RequestBody final JobOffer jobOffer) {
+        this.kafkaTemplate.send("job_offer", jobOffer);
         return jobOfferService.saveJobOffer(jobOffer);
     }
 
