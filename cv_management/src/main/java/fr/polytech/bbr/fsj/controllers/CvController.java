@@ -4,12 +4,14 @@ package fr.polytech.bbr.fsj.controllers;
 import fr.polytech.bbr.fsj.FileUploader;
 
 import io.minio.StatObjectResponse;
+import org.checkerframework.checker.units.qual.C;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Path;
@@ -55,6 +57,18 @@ public class CvController {
                     .contentLength(stat.size())
                     .header("Content-disposition", "attachment; filename=" + fileName)
                     .body(inputStreamResource);
+        } else {
+            return ResponseEntity.status(BAD_REQUEST).body(null);
+        }
+    }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping("/cv-delete")
+    public ResponseEntity<String> deleteCV(@RequestParam("fileName") String fileName) {
+        FileUploader fileUploader = new FileUploader();
+        Boolean result = fileUploader.deleteFile(fileName);
+        if (result) {
+            return ResponseEntity.ok().body("File successfully deleted");
         } else {
             return ResponseEntity.status(BAD_REQUEST).body(null);
         }
