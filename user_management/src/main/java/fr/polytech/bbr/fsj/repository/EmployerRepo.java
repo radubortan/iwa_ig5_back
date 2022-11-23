@@ -7,7 +7,5 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 @Transactional(readOnly = true)
-public interface EmployerRepo extends JpaRepository<Employer, Long> {
-    //Employer findByEmail(String email);
-    //<Optional>Employer findById(Long id);
+public interface EmployerRepo extends JpaRepository<Employer, String> {
 }

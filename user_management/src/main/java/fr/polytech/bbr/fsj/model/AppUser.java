@@ -18,7 +18,7 @@ import java.util.List;
 @AllArgsConstructor
 public class AppUser implements UserDetails {
     @Id
-    private Long id;
+    private String id;
     private String email;
     private String password;
     private Boolean locked = false;
@@ -26,7 +26,7 @@ public class AppUser implements UserDetails {
     @ManyToMany(fetch = FetchType.EAGER)
     private Collection<Role> roles = new ArrayList<>();
 
-    public AppUser(Long id, String email, String password) {
+    public AppUser(String id, String email, String password) {
         this.id = id;
         this.email = email;
         this.password = password;

@@ -35,7 +35,7 @@ public class RegistrationService {
             throw new IllegalArgumentException("Bad information provided");
         }
 
-        Long id = UUID.randomUUID().getMostSignificantBits() & Long.MAX_VALUE;
+        String id = UUID.randomUUID().toString();
 
         // add user to the database
         appUserService.saveUser(new AppUser(
@@ -64,7 +64,7 @@ public class RegistrationService {
             throw new IllegalArgumentException("Bad information provided");
         }
 
-        Long id = UUID.randomUUID().getMostSignificantBits() & Long.MAX_VALUE;
+        String id = UUID.randomUUID().toString();
 
         // add user to the database
         appUserService.saveUser(new AppUser(
