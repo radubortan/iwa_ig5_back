@@ -17,8 +17,7 @@ public class FsjApplication {
 	@Bean
 	CommandLineRunner run(RatingService ratingService) {
 		return args -> {
-			ratingService.saveRating(new Rating("1", 2, "", "1", "2"));
-			ratingService.saveRating(new Rating("2", 3, "test", "1", "2"));
+			ratingService.saveRating(new Rating("1", 2, "Ceci est un exemple", "1", "2"));
 		};
 	}
 }

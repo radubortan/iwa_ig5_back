@@ -54,6 +54,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         //updating a candidate is only accessible to a candidate
         http.authorizeRequests().antMatchers(PUT, "/api/users/candidate/{id}/update").hasAuthority("ROLE_CANDIDATE");
 
+        //updating CV link and CV keywords
+        http.authorizeRequests().antMatchers(PUT, "api/users/candidate/{idCandidate}/cv_link", "api/users/candidate/{idCandidate}/cv_keywords").hasAuthority("ROLE_CANDIDATE");
+
         //all other requests require user to be authenticated
         http.authorizeRequests().anyRequest().authenticated();
 

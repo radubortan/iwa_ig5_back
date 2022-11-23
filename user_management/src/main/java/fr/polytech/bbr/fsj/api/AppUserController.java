@@ -40,7 +40,7 @@ public class AppUserController {
             if (requesterId.equals(id) &&  role.equals("ROLE_EMPLOYER")) {
                 return ResponseEntity.ok().body(employerService.updateEmployer(employer));
             }
-            throw new Exception();
+            return ResponseEntity.status(FORBIDDEN).body(null);
         } catch (Exception e) {
             return ResponseEntity.status(BAD_REQUEST).body(null);
         }
@@ -61,7 +61,7 @@ public class AppUserController {
             if (requesterId.equals(id) && role.equals("ROLE_CANDIDATE")) {
                 return ResponseEntity.ok().body(candidateService.updateCandidate(candidate));
             }
-            throw new Exception();
+            return ResponseEntity.status(FORBIDDEN).body(null);
         } catch (Exception e) {
             return ResponseEntity.status(BAD_REQUEST).body(null);
         }
@@ -82,7 +82,7 @@ public class AppUserController {
             if (role.equals("ROLE_EMPLOYER")) {
                 return ResponseEntity.ok().body(id.toString());
             }
-            throw new Exception();
+            return ResponseEntity.status(FORBIDDEN).body(null);
         } catch (Exception e) {
             return ResponseEntity.status(BAD_REQUEST).body(null);
         }
@@ -103,7 +103,7 @@ public class AppUserController {
             if (role.equals("ROLE_CANDIDATE")) {
                 return ResponseEntity.ok().body(id);
             }
-            throw new Exception();
+            return ResponseEntity.status(FORBIDDEN).body(null);
         } catch (Exception e) {
             return ResponseEntity.status(BAD_REQUEST).body(null);
         }
@@ -127,11 +127,13 @@ public class AppUserController {
         return ResponseEntity.ok().body(appUserService.getRole(id));
     }
 
+    //get all candidates
     @GetMapping("/users/candidates")
     public ResponseEntity<List<Candidate>> getCandidates() {
         return ResponseEntity.ok().body(candidateService.getCandidates());
     }
 
+    //get the cv link given a candidate id
     @GetMapping("/users/candidate/{idCandidate}/cv_link")
     public ResponseEntity<String> getCvLink(@PathVariable String idCandidate) {
         try {
@@ -142,6 +144,7 @@ public class AppUserController {
         }
     }
 
+    //get the cv keywords given a candidate id
     @GetMapping("/users/candidate/{idCandidate}/cv_keywords")
     public ResponseEntity<String> getCvKeywords(@PathVariable String idCandidate) {
         try {
@@ -152,6 +155,7 @@ public class AppUserController {
         }
     }
 
+    //for a candidate to update their cv link
     @PutMapping("/users/candidate/{idCandidate}/cv_link")
     public ResponseEntity<String> updateCvLink(@PathVariable String idCandidate, @RequestBody String cvLink, @RequestHeader(AUTHORIZATION) String jwt) {
         JWTDecryption jwtDecryption = new JWTDecryption(jwt);
@@ -162,6 +166,7 @@ public class AppUserController {
         String id = appUserService.getAppUser(email).getId();
 
         try {
+            //making sure it's a candidate updating their own profile
             if(role.equals("ROLE_CANDIDATE") && idCandidate.equals(id)) {
                 return ResponseEntity.ok().body(candidateService.updateCvLink(idCandidate, cvLink));
             }
@@ -173,6 +178,7 @@ public class AppUserController {
 
     }
 
+    //for a candidate to update their cv keywords
     @PutMapping("/users/candidate/{idCandidate}/cv_keywords")
     public ResponseEntity<String> updateCvKeywords(@PathVariable String idCandidate, @RequestBody String cvKeywords, @RequestHeader(AUTHORIZATION) String jwt) {
         JWTDecryption jwtDecryption = new JWTDecryption(jwt);
@@ -183,7 +189,7 @@ public class AppUserController {
         String id = appUserService.getAppUser(email).getId();
 
         try {
-            //making sure that only the owner can update
+            //making sure it's a candidate updating their own profile
             if (role.equals("ROLE_CANDIDATE") && idCandidate.equals(id)) {
                 return ResponseEntity.ok().body(candidateService.updateCvKeywords(idCandidate, cvKeywords));
             }

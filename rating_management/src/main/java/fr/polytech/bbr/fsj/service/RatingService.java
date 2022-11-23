@@ -17,8 +17,12 @@ public class RatingService {
     private final RatingRepo ratingRepo;
 
     //get all ratings for a user by providing the user id
-    public List<Rating> getAllRatings(String id) {
-        return ratingRepo.getRatingsByIdReceiver(id);
+    public List<Rating> getAllRatings(String id) throws NoSuchElementException {
+        List<Rating> list = ratingRepo.getRatingsByIdReceiver(id);
+        if (list == null) {
+            throw new NoSuchElementException();
+        }
+        return list;
     }
 
     public Rating getRatingByIdSenderAndIdReceiver(String idSender, String idReceiver) throws NoSuchElementException{
@@ -36,15 +40,11 @@ public class RatingService {
     }
 
     //add a rating to a user by providing the receiver id in the body
-    public String saveRating(Rating rating) throws IllegalStateException {
-        //check that sender and receiver have worked together
-        //Rating existingRating = ratingRepo.getRatingByIdSenderAndIdReceiver(rating.getIdSender(), rating.getIdReceiver());
-        //if (existingRating == null ) {
-            ratingRepo.save(rating);
-        //}
-        //else {
-        //    throw new IllegalStateException();
-        //}
+    public String saveRating(Rating rating) throws IllegalArgumentException {
+        if (rating.getValue() > 5 || rating.getValue() < 1) {
+            throw new IllegalArgumentException();
+        }
+        ratingRepo.save(rating);
         return "Rating added successfully";
     }
 

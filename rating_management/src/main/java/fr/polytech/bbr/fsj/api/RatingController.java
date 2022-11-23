@@ -1,10 +1,7 @@
 package fr.polytech.bbr.fsj.api;
 
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.JWTVerifier;
-import com.auth0.jwt.algorithms.Algorithm;
-import com.auth0.jwt.interfaces.DecodedJWT;
 import fr.polytech.bbr.fsj.model.Rating;
+import fr.polytech.bbr.fsj.security.JWTDecryption;
 import fr.polytech.bbr.fsj.service.RatingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -25,9 +22,15 @@ public class RatingController {
     //get all ratings for a user by providing the user id
     @GetMapping("/ratings/{id}")
     public ResponseEntity<List<Rating>> getAllRatings(@PathVariable String id) {
-        return ResponseEntity.ok().body(ratingService.getAllRatings(id));
+        try {
+            return ResponseEntity.ok().body(ratingService.getAllRatings(id));
+        }
+        catch (NoSuchElementException e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
     }
 
+    //get the rating given the id of the sender and the id of the receiver
     @GetMapping("/ratings/{idSender}/{idReceiver}")
     public ResponseEntity<Rating> getRatingByIdSenderAndIdReceiver(@PathVariable String idSender, @PathVariable String idReceiver) {
         try {
@@ -42,12 +45,14 @@ public class RatingController {
    @PostMapping("/ratings/new")
     public ResponseEntity<String> postRating(@RequestBody RatingRequest request, @RequestHeader(AUTHORIZATION) String jwt) {
        try {
-           String token = jwt.substring("Bearer ".length());
-           Algorithm algorithm = Algorithm.HMAC256("fsj-Secret".getBytes());
-           JWTVerifier verifier = JWT.require(algorithm).build();
-           DecodedJWT decodedJWT = verifier.verify(token);
-           String idSender = decodedJWT.getClaim("accountId").asString();
-           return ResponseEntity.ok().body(ratingService.saveRating(new Rating(request.getId(),request.getValue(), request.getComment(), idSender, request.getIdReceiver())));
+           JWTDecryption jwtDecryption = new JWTDecryption(jwt);
+           String idSender = jwtDecryption.getAccountId();
+
+           //prevent user from rating themselves
+           if (!idSender.equals(request.getIdReceiver())) {
+               return ResponseEntity.ok().body(ratingService.saveRating(new Rating(request.getId(),request.getValue(), request.getComment(), idSender, request.getIdReceiver())));
+           }
+           return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Not allowed to rate yourself");
        }
        catch (IllegalStateException e) {
            return ResponseEntity.status(HttpStatus.CONFLICT).body("A rating already exists");
@@ -61,18 +66,13 @@ public class RatingController {
     @DeleteMapping("/ratings/delete/{idRating}")
     public ResponseEntity<String> deleteRating(@PathVariable String idRating, @RequestHeader(AUTHORIZATION) String jwt) {
         try {
-            String token = jwt.substring("Bearer ".length());
-            Algorithm algorithm = Algorithm.HMAC256("fsj-Secret".getBytes());
-            JWTVerifier verifier = JWT.require(algorithm).build();
-            DecodedJWT decodedJWT = verifier.verify(token);
-            String idSenderToken = decodedJWT.getClaim("accountId").asString();
+            JWTDecryption jwtDecryption = new JWTDecryption(jwt);
+            String idSenderToken = jwtDecryption.getAccountId();
 
             String idSender = ratingService.getSenderId(idRating);
 
             //making sure that the id in the token is the same as the sender id in the database
             if (!idSender.equals(idSenderToken)) {
-                System.out.println(idSender);
-                System.out.println(idSenderToken);
                 return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Unauthorised");
             }
             return ResponseEntity.ok().body(ratingService.deleteRating(idRating));
