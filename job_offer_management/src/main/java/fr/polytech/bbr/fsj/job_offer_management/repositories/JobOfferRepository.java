@@ -21,7 +21,7 @@ public interface JobOfferRepository extends JpaRepository<JobOffer, Long> {
     @Modifying
     @Query("UPDATE JobOffer j " +
             "SET j.title = :title, " +
-            " j.description = :description, " +
+            "j.description = :description, " +
             "j.beginningDate = :beginningDate, " +
             "j.endingDate = :endingDate, " +
             "j.place = :place, " +
