@@ -1,4 +1,4 @@
-CREATE DATABASE fsj
+/*CREATE DATABASE fsj
     WITH
     OWNER = fsj
     ENCODING = 'UTF8'
@@ -7,11 +7,4 @@ CREATE DATABASE fsj
     TABLESPACE = pg_default
     CONNECTION LIMIT = -1;
 
-\c fsj;
-
-CREATE TABLE CV (
-	jobseeker_id integer,
-	name_file_cv varchar(100),
-	keywords_cv varchar[]
-);
-
+\c fsj;*/
