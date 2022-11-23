@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 class RoleToUserForm {
-    private Long id;
+    private String id;
     private String roleName;
 }

@@ -19,7 +19,7 @@ public class EmployerService {
         employerRepo.save(employer);
     }
 
-    public Employer getEmployerById(Long id) {
+    public Employer getEmployerById(String id) {
         return employerRepo.findById(id).orElse(null);
     }
 

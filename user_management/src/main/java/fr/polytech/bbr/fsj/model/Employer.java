@@ -13,12 +13,12 @@ import javax.persistence.Id;
 @ToString
 public class Employer {
     @Id
-    private Long id;
+    private String id;
     private String companyName;
     private String address;
     private String phoneNumber;
 
-    public Employer(Long id, String companyName, String address, String phoneNumber) {
+    public Employer(String id, String companyName, String address, String phoneNumber) {
         this.id = id;
         this.companyName = companyName;
         this.address = address;

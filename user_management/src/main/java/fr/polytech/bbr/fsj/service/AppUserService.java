@@ -64,7 +64,7 @@ public class AppUserService implements UserDetailsService {
     }
 
     //get user role by the user id
-    public Role getRole(Long id) {
+    public Role getRole(String id) {
         AppUser appUser = appUserRepo.findById(id).orElse(null);
         return appUser.getRoles().iterator().next();
     }

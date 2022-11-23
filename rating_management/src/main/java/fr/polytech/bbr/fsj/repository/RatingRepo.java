@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 @Transactional
-public interface RatingRepo extends JpaRepository<Rating, Long> {
-    List<Rating> getRatingsByIdReceiver(Long id);
+public interface RatingRepo extends JpaRepository<Rating, String> {
+    List<Rating> getRatingsByIdReceiver(String id);
 }

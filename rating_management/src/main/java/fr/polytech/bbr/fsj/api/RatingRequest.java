@@ -8,11 +8,13 @@ import lombok.ToString;
 @EqualsAndHashCode
 @Getter
 public class RatingRequest {
+    private final String id;
     private final int value;
     private final String comment;
-    private final Long idReceiver;
+    private final String idReceiver;
 
-    public RatingRequest(int value, String comment, Long idReceiver) {
+    public RatingRequest(String id, int value, String comment, String idReceiver) {
+        this.id = id;
         this.value = value;
         this.comment = comment;
         this.idReceiver = idReceiver;

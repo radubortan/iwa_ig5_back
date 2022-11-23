@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 
@@ -21,16 +22,20 @@ import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 public class RatingController {
     private final RatingService ratingService;
 
-    //get average rating for a user by providing their id
-    @GetMapping("/ratings/average/{id}")
-    public ResponseEntity<Double> getAverageRating(@PathVariable Long id) {
-        return ResponseEntity.ok().body(ratingService.getAverageRating(id));
-    }
-
     //get all ratings for a user by providing the user id
     @GetMapping("/ratings/{id}")
-    public ResponseEntity<List<Rating>> getAllRatings(@PathVariable Long id) {
+    public ResponseEntity<List<Rating>> getAllRatings(@PathVariable String id) {
         return ResponseEntity.ok().body(ratingService.getAllRatings(id));
+    }
+
+    @GetMapping("/ratings/{idSender}/{idReceiver}")
+    public ResponseEntity<Rating> getRatingByIdSenderAndIdReceiver(@PathVariable String idSender, @PathVariable String idReceiver) {
+        try {
+            return ResponseEntity.ok().body(ratingService.getRatingByIdSenderAndIdReceiver(idSender, idReceiver));
+        }
+        catch (NoSuchElementException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
     }
 
     //add a rating to a user by providing the receiver id in the body
@@ -41,9 +46,11 @@ public class RatingController {
            Algorithm algorithm = Algorithm.HMAC256("fsj-Secret".getBytes());
            JWTVerifier verifier = JWT.require(algorithm).build();
            DecodedJWT decodedJWT = verifier.verify(token);
-           Long idSender = decodedJWT.getClaim("accountId").asLong();
-
-           return ResponseEntity.ok().body(ratingService.saveRating(request, idSender));
+           String idSender = decodedJWT.getClaim("accountId").asString();
+           return ResponseEntity.ok().body(ratingService.saveRating(new Rating(request.getId(),request.getValue(), request.getComment(), idSender, request.getIdReceiver())));
+       }
+       catch (IllegalStateException e) {
+           return ResponseEntity.status(HttpStatus.CONFLICT).body("A rating already exists");
        }
        catch (Exception e) {
            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Bad request");
@@ -52,15 +59,15 @@ public class RatingController {
 
     //remove a rating by providing the rating id
     @DeleteMapping("/ratings/delete/{idRating}")
-    public ResponseEntity<String> deleteRating(@PathVariable Long idRating, @RequestHeader(AUTHORIZATION) String jwt) {
+    public ResponseEntity<String> deleteRating(@PathVariable String idRating, @RequestHeader(AUTHORIZATION) String jwt) {
         try {
             String token = jwt.substring("Bearer ".length());
             Algorithm algorithm = Algorithm.HMAC256("fsj-Secret".getBytes());
             JWTVerifier verifier = JWT.require(algorithm).build();
             DecodedJWT decodedJWT = verifier.verify(token);
-            Long idSenderToken = decodedJWT.getClaim("accountId").asLong();
+            String idSenderToken = decodedJWT.getClaim("accountId").asString();
 
-            Long idSender = ratingService.getSenderId(idRating);
+            String idSender = ratingService.getSenderId(idRating);
 
             //making sure that the id in the token is the same as the sender id in the database
             if (!idSender.equals(idSenderToken)) {

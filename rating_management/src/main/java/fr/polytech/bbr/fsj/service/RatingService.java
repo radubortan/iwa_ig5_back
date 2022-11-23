@@ -1,6 +1,5 @@
 package fr.polytech.bbr.fsj.service;
 
-import fr.polytech.bbr.fsj.api.RatingRequest;
 import fr.polytech.bbr.fsj.model.Rating;
 import fr.polytech.bbr.fsj.repository.RatingRepo;
 import lombok.RequiredArgsConstructor;
@@ -8,6 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -15,47 +16,49 @@ import java.util.List;
 public class RatingService {
     private final RatingRepo ratingRepo;
 
-    //get average rating for a user by providing their id
-    public Double getAverageRating(Long id) {
-        List<Rating> ratings = ratingRepo.getRatingsByIdReceiver(id);
-
-        //if no ratings, return °
-        if (ratings.size() == 0) {
-            return 0d;
-        }
-
-        double sum = 0;
-        for (Rating rating : ratings) {
-            sum = sum + rating.getValue();
-        }
-
-        //return the sum divided by the number of ratings
-        return sum / ratings.size();
-    }
-
     //get all ratings for a user by providing the user id
-    public List<Rating> getAllRatings(Long id) {
+    public List<Rating> getAllRatings(String id) {
         return ratingRepo.getRatingsByIdReceiver(id);
     }
 
+    public Rating getRatingByIdSenderAndIdReceiver(String idSender, String idReceiver) throws NoSuchElementException{
+        List<Rating> list = ratingRepo.getRatingsByIdReceiver(idReceiver);
+
+        if (list.size() != 0) {
+            List<Rating> filteredList = list.stream().filter(rating -> rating.getIdSender().equals(idSender)).collect(Collectors.toList());
+
+            if (filteredList.size() != 0) {
+                return filteredList.get(0);
+            }
+            throw new NoSuchElementException();
+        }
+        throw new NoSuchElementException();
+    }
+
     //add a rating to a user by providing the receiver id in the body
-    public String saveRating(RatingRequest request, Long idSender) {
-
+    public String saveRating(Rating rating) throws IllegalStateException {
         //check that sender and receiver have worked together
-
-        ratingRepo.save(new Rating(request.getValue(), request.getComment(), idSender, request.getIdReceiver()));
+        //Rating existingRating = ratingRepo.getRatingByIdSenderAndIdReceiver(rating.getIdSender(), rating.getIdReceiver());
+        //if (existingRating == null ) {
+            ratingRepo.save(rating);
+        //}
+        //else {
+        //    throw new IllegalStateException();
+        //}
         return "Rating added successfully";
     }
 
     //remove a rating by providing the rating id
-    public String deleteRating(Long idRating) {
+    public String deleteRating(String idRating) {
         ratingRepo.deleteById(idRating);
         return "Rating deleted successfully";
     }
 
     //get the sender id by providing the id of the rating
-    public Long getSenderId(Long idRating) throws Exception{
+    public String getSenderId(String idRating) throws Exception{
         Rating rating = ratingRepo.findById(idRating).orElseThrow(() -> new Exception());
         return rating.getIdSender();
     }
+
+
 }

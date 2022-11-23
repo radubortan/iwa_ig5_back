@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class Candidate {
     @Id
-    private Long id;
+    private String id;
     private String lastName;
     private String firstName;
     private LocalDate birthday;
@@ -21,7 +21,7 @@ public class Candidate {
     private String linkCv = "";
     private String cvKeywords = "";
 
-    public Candidate(Long id, String lastName, String firstName, LocalDate birthday, String phoneNumber) {
+    public Candidate(String id, String lastName, String firstName, LocalDate birthday, String phoneNumber) {
         this.id = id;
         this.lastName = lastName;
         this.firstName = firstName;
