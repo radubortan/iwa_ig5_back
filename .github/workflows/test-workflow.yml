@@ -23,6 +23,9 @@ jobs:
         with:
           arguments: build
       - name: Test API Gateway Application
+        run: |
+          cd ./api_gateway
+          ./gradlew test
       - name: Test User Management Application
         run: |
           cd ./user_management
