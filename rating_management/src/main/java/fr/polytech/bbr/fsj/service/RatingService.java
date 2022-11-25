@@ -17,15 +17,12 @@ public class RatingService {
     private final RatingRepo ratingRepo;
 
     //get all ratings for a user by providing the user id
-    public List<Rating> getAllRatings(String id) throws NoSuchElementException {
+    public List<Rating> getAllRatings(String id) {
         List<Rating> list = ratingRepo.getRatingsByIdReceiver(id);
-        if (list == null) {
-            throw new NoSuchElementException();
-        }
         return list;
     }
 
-    public Rating getRatingByIdSenderAndIdReceiver(String idSender, String idReceiver) throws NoSuchElementException{
+    public Rating getRatingByIdSenderAndIdReceiver(String idSender, String idReceiver) throws NoSuchElementException {
         List<Rating> list = ratingRepo.getRatingsByIdReceiver(idReceiver);
 
         if (list.size() != 0) {
@@ -34,9 +31,9 @@ public class RatingService {
             if (filteredList.size() != 0) {
                 return filteredList.get(0);
             }
-            throw new NoSuchElementException();
+            return null;
         }
-        throw new NoSuchElementException();
+        return null;
     }
 
     //add a rating to a user by providing the receiver id in the body

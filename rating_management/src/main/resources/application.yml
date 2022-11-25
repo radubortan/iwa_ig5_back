@@ -9,9 +9,11 @@ spring:
     password: password
     url: jdbc:postgresql://localhost:5400/fsj
     username: postgres
+  main:
+    lazy-initialization: true
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      #ddl-auto: create-drop
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect

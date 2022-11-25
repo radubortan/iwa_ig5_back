@@ -40,7 +40,7 @@ class UserTests {
     @Test
     @WithMockUser(username="bortanradu@gmail.com", password = "password", roles = "CANDIDATE")
     void shouldGetCandidate() throws Exception{
-        candidateService.saveCandidate(new Candidate(1l, "White", "Walter", LocalDate.of(1990, 1, 1), "06000000"));
+        candidateService.saveCandidate(new Candidate("test", "White", "Walter", LocalDate.of(1990, 1, 1), "06000000"));
 
         RequestBuilder request = MockMvcRequestBuilders.get("/api/users/candidate/1");
 

@@ -9,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 
 import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 
@@ -22,29 +21,23 @@ public class RatingController {
     //get all ratings for a user by providing the user id
     @GetMapping("/ratings/{id}")
     public ResponseEntity<List<Rating>> getAllRatings(@PathVariable String id) {
-        try {
-            return ResponseEntity.ok().body(ratingService.getAllRatings(id));
-        }
-        catch (NoSuchElementException e){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-        }
+        return ResponseEntity.ok().body(ratingService.getAllRatings(id));
     }
 
     //get the rating given the id of the sender and the id of the receiver
     @GetMapping("/ratings/{idSender}/{idReceiver}")
     public ResponseEntity<Rating> getRatingByIdSenderAndIdReceiver(@PathVariable String idSender, @PathVariable String idReceiver) {
-        try {
-            return ResponseEntity.ok().body(ratingService.getRatingByIdSenderAndIdReceiver(idSender, idReceiver));
-        }
-        catch (NoSuchElementException e) {
+        Rating rating = ratingService.getRatingByIdSenderAndIdReceiver(idSender, idReceiver);
+        if (rating == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
+        return ResponseEntity.ok().body(rating);
     }
 
     //add a rating to a user by providing the receiver id in the body
    @PostMapping("/ratings/new")
     public ResponseEntity<String> postRating(@RequestBody RatingRequest request, @RequestHeader(AUTHORIZATION) String jwt) {
-       try {
+        try {
            JWTDecryption jwtDecryption = new JWTDecryption(jwt);
            String idSender = jwtDecryption.getAccountId();
 

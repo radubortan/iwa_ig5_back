@@ -20,4 +20,5 @@ public class FsjApplication {
 			ratingService.saveRating(new Rating("1", 2, "Ceci est un exemple", "1", "2"));
 		};
 	}
+
 }
