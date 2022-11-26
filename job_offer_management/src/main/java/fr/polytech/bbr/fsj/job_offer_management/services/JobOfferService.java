@@ -45,7 +45,7 @@ public class JobOfferService {
                 newJobOffer.getPlace(),
                 newJobOffer.getNumberPositions(),
                 newJobOffer.getRemuneration(),
-                newJobOffer.getPublishingDate(),
-                newJobOffer.getIdEmployer());
+                newJobOffer.getPublishingDate()
+                );
     }
 }

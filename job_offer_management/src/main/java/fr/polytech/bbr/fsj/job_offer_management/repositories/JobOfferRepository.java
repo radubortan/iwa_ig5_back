@@ -27,8 +27,7 @@ public interface JobOfferRepository extends JpaRepository<JobOffer, Long> {
             "j.place = :place, " +
             "j.numberPositions = :numberPositions, " +
             "j.remuneration = :remuneration, " +
-            "j.publishingDate = :publishingDate, " +
-            "j.idEmployer = :idEmployer " +
+            "j.publishingDate = :publishingDate " +
             "WHERE j.idJobOffer = :idJobOffer")
     void updateJobOffer(@Param("idJobOffer") Long idJobOffer,
                        @Param("title") String title,
@@ -38,8 +37,7 @@ public interface JobOfferRepository extends JpaRepository<JobOffer, Long> {
                        @Param("place") String place,
                        @Param("numberPositions") Integer numberPositions,
                        @Param("remuneration") Double remuneration,
-                       @Param("publishingDate") Date publishingDate,
-                       @Param("idEmployer") Long idEmployer
+                       @Param("publishingDate") Date publishingDate
                        );
 }
 
