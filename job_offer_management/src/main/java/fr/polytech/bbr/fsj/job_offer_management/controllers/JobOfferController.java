@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/api")
 public class JobOfferController {
 
@@ -75,7 +76,6 @@ public class JobOfferController {
      */
     @PutMapping("/job-offers/{id}")
     public void updateJobOffer(@PathVariable("id") final Long id, @RequestBody final JobOffer jobOffer){
-        System.out.println(id);
         jobOfferService.updateJobOffer(id, jobOffer);
     }
 }

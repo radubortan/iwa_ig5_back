@@ -2,12 +2,13 @@ server:
   error:
     include-message: always
     include-binding-errors: always
+  port: ${PORT}
 
 spring:
   datasource:
-    password: password
-    url: jdbc:postgresql://localhost:5400/fsj
-    username: postgres
+    password: ${DB_PASSWORD}
+    url: ${DB_URL}
+    username: ${DB_USER}
   jpa:
     hibernate:
       ddl-auto: create-drop
