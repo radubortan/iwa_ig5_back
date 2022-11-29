@@ -39,6 +39,6 @@ jobs:
           cd ./rating_management
           ./gradlew test
       - name: Test Recommendation Management Application
-          run: |
-            cd ./recommendation_management
-            ./gradlew test
+        run: |
+          cd ./recommendation_management
+          ./gradlew test
