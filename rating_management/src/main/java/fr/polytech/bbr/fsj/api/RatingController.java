@@ -18,13 +18,22 @@ import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 public class RatingController {
     private final RatingService ratingService;
 
-    //get all ratings for a user by providing the user id
+    /**
+     * Get all the rating received by a user given their id
+     * @param id the id of the user
+     * @return a list of all the ratings received by the user
+     */
     @GetMapping("/ratings/{id}")
     public ResponseEntity<List<Rating>> getAllRatings(@PathVariable String id) {
         return ResponseEntity.ok().body(ratingService.getAllRatings(id));
     }
 
-    //get the rating given the id of the sender and the id of the receiver
+    /**
+     * Get a rating by the id of the sender and the id of the receiver
+     * @param idSender the id of the sending user
+     * @param idReceiver the id of the receiving user
+     * @return a rating
+     */
     @GetMapping("/ratings/{idSender}/{idReceiver}")
     public ResponseEntity<Rating> getRatingByIdSenderAndIdReceiver(@PathVariable String idSender, @PathVariable String idReceiver) {
         Rating rating = ratingService.getRatingByIdSenderAndIdReceiver(idSender, idReceiver);
@@ -34,7 +43,12 @@ public class RatingController {
         return ResponseEntity.ok().body(rating);
     }
 
-    //add a rating to a user by providing the receiver id in the body
+    /**
+     * Adds a rating to the database
+     * @param request information about the rating
+     * @param jwt token for authorisation
+     * @return a confirmation message
+     */
    @PostMapping("/ratings/new")
     public ResponseEntity<String> postRating(@RequestBody RatingRequest request, @RequestHeader(AUTHORIZATION) String jwt) {
         try {
@@ -55,7 +69,12 @@ public class RatingController {
        }
     }
 
-    //remove a rating by providing the rating id
+    /**
+     * Removes a rating given its id
+     * @param idRating id of the rating to remove
+     * @param jwt token for authorisation
+     * @return a confirmation message
+     */
     @DeleteMapping("/ratings/delete/{idRating}")
     public ResponseEntity<String> deleteRating(@PathVariable String idRating, @RequestHeader(AUTHORIZATION) String jwt) {
         try {

@@ -11,6 +11,11 @@ import org.springframework.web.bind.annotation.*;
 public class RegistrationController {
     private final RegistrationService registrationService;
 
+    /**
+     * Registers an employer
+     * @param request the body of the request containing information about the employer
+     * @return a String as a response
+     */
     @PostMapping("/employer")
     public ResponseEntity<String> registerEmployer(@RequestBody RegistrationRequestEmployer request) {
         try {
@@ -26,6 +31,11 @@ public class RegistrationController {
         }
     }
 
+    /**
+     * Registers a candidate
+     * @param request the body of the request containing information about the candidate
+     * @return a String as a response
+     */
     @PostMapping("/candidate")
     public ResponseEntity<String> registerCandidate(@RequestBody RegistrationRequestCandidate request) {
         try {

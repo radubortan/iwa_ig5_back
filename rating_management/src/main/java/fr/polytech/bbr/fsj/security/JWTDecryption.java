@@ -16,19 +16,36 @@ public class JWTDecryption {
         this.jwt = verifier.verify(token);
     }
 
+    /**
+     * Get the role out of the token
+     * @return the role
+     */
     public String getRole() {
         String role = jwt.getClaim("roles").asArray(String.class)[0];
         return role;
     }
 
+    /**
+     * Get the email out of the token
+     * @return the email
+     */
     public String getEmail() {
         return jwt.getSubject();
     }
 
-    public String getClaim(String claim) {
-        return jwt.getClaim(claim).toString();
+    /**
+     * Get a claim out of the token
+     * @param claim name of the claim
+     * @return the claim
+     */
+    public Object getClaim(String claim) {
+        return jwt.getClaim(claim);
     }
 
+    /**
+     * Get the account if out of the token
+     * @return the account id
+     */
     public String getAccountId() {
         return jwt.getClaim("accountId").asString();
     }

@@ -40,7 +40,11 @@ public class AppUserService implements UserDetailsService {
         return new User(user.getEmail(), user.getPassword(), authorities);
     }
 
-    //adds user to the database
+    /**
+     * Saves user to database
+     * @param user the user
+     * @param role the user role
+     */
     public void saveUser(AppUser user, String role) {
         //checks if email isn't taken
         boolean userExists = appUserRepo.findByEmail(user.getEmail()) != null;
@@ -59,32 +63,50 @@ public class AppUserService implements UserDetailsService {
         addRoleToAppUser(user.getEmail(), role);
     }
 
+    /**
+     * Saves a user role to the database
+     * @param role the role
+     * @return the role
+     */
     public Role saveRole(Role role) {
         return roleRepo.save(role);
     }
 
-    //get user role by the user id
+    /**
+     * Get a role
+     * @param id id of the role
+     * @return the role
+     */
     public Role getRole(String id) {
         AppUser appUser = appUserRepo.findById(id).orElse(null);
         return appUser.getRoles().iterator().next();
     }
 
+    /**
+     * Adds a role to a user
+     * @param email the email of the user
+     * @param roleName the name of the role
+     */
     public void addRoleToAppUser(String email, String roleName) {
         AppUser user = appUserRepo.findByEmail(email);
         Role role = roleRepo.findByName(roleName);
         user.getRoles().add(role);
     }
 
+    /**
+     * Gets a user by their email
+     * @param email the email of the user
+     * @return the user
+     */
     public AppUser getAppUser(String email) {
         return appUserRepo.findByEmail(email);
     }
 
+    /**
+     * Get all app users
+     * @return a list of all the users
+     */
     public List<AppUser> getAppUsers() {
         return appUserRepo.findAll();
-    }
-
-    //activates the account when the link in the activation link is clicked
-    public int enableAppUser(String email) {
-        return appUserRepo.enableAppUser(email);
     }
 }
