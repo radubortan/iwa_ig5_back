@@ -17,15 +17,25 @@ public class RatingService {
     private final RatingRepo ratingRepo;
 
     //get all ratings for a user by providing the user id
-    public List<Rating> getAllRatings(String id) throws NoSuchElementException {
+
+    /**
+     * Get all the ratings received by a user given their id
+     * @param id the id of the user
+     * @return all the ratings received by the user
+     */
+    public List<Rating> getAllRatings(String id) {
         List<Rating> list = ratingRepo.getRatingsByIdReceiver(id);
-        if (list == null) {
-            throw new NoSuchElementException();
-        }
         return list;
     }
 
-    public Rating getRatingByIdSenderAndIdReceiver(String idSender, String idReceiver) throws NoSuchElementException{
+    /**
+     * Get a rating by the id of the sender and the id of the receiver
+     * @param idSender the id of the sending user
+     * @param idReceiver the id of the receiving user
+     * @return a rating
+     * @throws NoSuchElementException
+     */
+    public Rating getRatingByIdSenderAndIdReceiver(String idSender, String idReceiver) throws NoSuchElementException {
         List<Rating> list = ratingRepo.getRatingsByIdReceiver(idReceiver);
 
         if (list.size() != 0) {
@@ -34,12 +44,17 @@ public class RatingService {
             if (filteredList.size() != 0) {
                 return filteredList.get(0);
             }
-            throw new NoSuchElementException();
+            return null;
         }
-        throw new NoSuchElementException();
+        return null;
     }
 
-    //add a rating to a user by providing the receiver id in the body
+    /**
+     * Adds a rating to the database
+     * @param rating the rating to add
+     * @return a confirmation message
+     * @throws IllegalArgumentException
+     */
     public String saveRating(Rating rating) throws IllegalArgumentException {
         if (rating.getValue() > 5 || rating.getValue() < 1) {
             throw new IllegalArgumentException();
@@ -48,13 +63,22 @@ public class RatingService {
         return "Rating added successfully";
     }
 
-    //remove a rating by providing the rating id
+    /**
+     * Removes a rating given its id
+     * @param idRating the id of the rating to remove
+     * @return a confirmation message
+     */
     public String deleteRating(String idRating) {
         ratingRepo.deleteById(idRating);
         return "Rating deleted successfully";
     }
 
-    //get the sender id by providing the id of the rating
+    /**
+     * Get the id of the sender of a rating given the rating id
+     * @param idRating the id of the rating
+     * @return the id of the sender
+     * @throws Exception
+     */
     public String getSenderId(String idRating) throws Exception{
         Rating rating = ratingRepo.findById(idRating).orElseThrow(() -> new Exception());
         return rating.getIdSender();

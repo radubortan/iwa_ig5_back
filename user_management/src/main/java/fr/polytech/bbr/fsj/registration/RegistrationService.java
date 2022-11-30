@@ -20,7 +20,12 @@ public class RegistrationService {
     private final EmployerService employerService;
     private final EmailValidator emailValidator;
 
-    //register an employer
+    /**
+     * Registers an employer
+     * @param request information about the employer
+     * @return a string with a message
+     * @throws IllegalArgumentException
+     */
     public String registerEmployer(RegistrationRequestEmployer request) throws IllegalArgumentException {
         //check if email is valid
         boolean isValidEmail = emailValidator.test(request.getEmail());
@@ -48,7 +53,12 @@ public class RegistrationService {
         return "Registration successful";
     }
 
-    //register a candidate
+    /**
+     * Registers a candidate
+     * @param request information about the candidate
+     * @return a string with a message
+     * @throws IllegalArgumentException
+     */
     public String registerCandidate(RegistrationRequestCandidate request) throws IllegalArgumentException {
         //check if email is valid
         boolean isValidEmail = emailValidator.test(request.getEmail());

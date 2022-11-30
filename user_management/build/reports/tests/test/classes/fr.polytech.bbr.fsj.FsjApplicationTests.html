@@ -3,17 +3,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta http-equiv="x-ua-compatible" content="IE=edge"/>
-<title>Test results - RegistrationTests</title>
+<title>Test results - FsjApplicationTests</title>
 <link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
 <link href="../css/style.css" rel="stylesheet" type="text/css"/>
 <script src="../js/report.js" type="text/javascript"></script>
 </head>
 <body>
 <div id="content">
-<h1>RegistrationTests</h1>
+<h1>FsjApplicationTests</h1>
 <div class="breadcrumbs">
 <a href="../index.html">all</a> &gt; 
-<a href="../packages/fr.polytech.bbr.fsj.html">fr.polytech.bbr.fsj</a> &gt; RegistrationTests</div>
+<a href="../packages/fr.polytech.bbr.fsj.html">fr.polytech.bbr.fsj</a> &gt; FsjApplicationTests</div>
 <div id="summary">
 <table>
 <tr>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.066s</div>
+<div class="counter">0.074s</div>
 <p>duration</p>
 </div>
 </td>
@@ -78,8 +78,8 @@
 </tr>
 </thead>
 <tr>
-<td class="success">shouldSignUpEmployerTest()</td>
-<td class="success">0.066s</td>
+<td class="success">contextLoads()</td>
+<td class="success">0.074s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -87,21 +87,22 @@
 <div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>16:45:23.273 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
-16:45:23.277 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
-16:45:23.292 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [fr.polytech.bbr.fsj.RegistrationTests] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
-16:45:23.298 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [fr.polytech.bbr.fsj.RegistrationTests], using SpringBootContextLoader
-16:45:23.300 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [fr.polytech.bbr.fsj.RegistrationTests]: class path resource [fr/polytech/bbr/fsj/RegistrationTests-context.xml] does not exist
-16:45:23.300 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [fr.polytech.bbr.fsj.RegistrationTests]: class path resource [fr/polytech/bbr/fsj/RegistrationTestsContext.groovy] does not exist
-16:45:23.300 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [fr.polytech.bbr.fsj.RegistrationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
-16:45:23.300 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [fr.polytech.bbr.fsj.RegistrationTests]: RegistrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-16:45:23.342 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [fr.polytech.bbr.fsj.RegistrationTests]
-16:45:23.368 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [/Users/radubortan/Documents/IWA/iwa_ig5_back/user_management/build/classes/java/main/fr/polytech/bbr/fsj/FsjApplication.class]
-16:45:23.368 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration fr.polytech.bbr.fsj.FsjApplication for test class fr.polytech.bbr.fsj.RegistrationTests
-16:45:23.403 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [fr.polytech.bbr.fsj.RegistrationTests]: using defaults.
-16:45:23.403 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener, org.springframework.security.test.context.support.ReactorContextTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
-16:45:23.410 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@f74e835, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@3276732, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@3f28bd56, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@31e3250d, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@19fe4644, org.springframework.test.context.support.DirtiesContextTestExecutionListener@21d8bcbe, org.springframework.test.context.transaction.TransactionalTestExecutionListener@5be067de, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@7383eae2, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@18245eb0, org.springframework.test.context.event.EventPublishingTestExecutionListener@7c7d3c46, org.springframework.security.test.context.support.ReactorContextTestExecutionListener@24fb6a80, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@48c35007, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@72a85671, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@6722db6e, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@18f20260, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@4ae33a11, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@7a48e6e2]
-16:45:23.412 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@2ed3b1f5 testClass = RegistrationTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@63648ee9 testClass = RegistrationTests, locations = '{}', classes = '{class fr.polytech.bbr.fsj.FsjApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@484094a5, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@4b3fa0b3, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@64a40280, [ImportsContextCustomizer@68d6972f key = [org.springframework.boot.test.autoconfigure.web.servlet.MockMvcAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcWebClientAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcWebDriverAutoConfiguration, org.springframework.boot.autoconfigure.security.oauth2.client.servlet.OAuth2ClientAutoConfiguration, org.springframework.boot.autoconfigure.security.oauth2.resource.servlet.OAuth2ResourceServerAutoConfiguration, org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration, org.springframework.boot.autoconfigure.security.servlet.SecurityFilterAutoConfiguration, org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcSecurityConfiguration, org.springframework.boot.test.autoconfigure.web.reactive.WebTestClientAutoConfiguration]], org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@22356acd, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@7dda48d9, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@9a044402, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@503ecb24, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@175b9425], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true]], class annotated with @DirtiesContext [false] with mode [null].
+<pre>15:15:38.467 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+15:15:38.473 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+15:15:38.489 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [fr.polytech.bbr.fsj.FsjApplicationTests] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+15:15:38.496 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [fr.polytech.bbr.fsj.FsjApplicationTests], using SpringBootContextLoader
+15:15:38.498 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [fr.polytech.bbr.fsj.FsjApplicationTests]: class path resource [fr/polytech/bbr/fsj/FsjApplicationTests-context.xml] does not exist
+15:15:38.498 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [fr.polytech.bbr.fsj.FsjApplicationTests]: class path resource [fr/polytech/bbr/fsj/FsjApplicationTestsContext.groovy] does not exist
+15:15:38.498 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [fr.polytech.bbr.fsj.FsjApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+15:15:38.499 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [fr.polytech.bbr.fsj.FsjApplicationTests]: FsjApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+15:15:38.519 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [fr.polytech.bbr.fsj.FsjApplicationTests]
+15:15:38.553 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [/Users/radubortan/Documents/IWA/iwa_ig5_back/user_management/build/classes/java/main/fr/polytech/bbr/fsj/FsjApplication.class]
+15:15:38.554 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration fr.polytech.bbr.fsj.FsjApplication for test class fr.polytech.bbr.fsj.FsjApplicationTests
+15:15:38.590 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [fr.polytech.bbr.fsj.FsjApplicationTests]: using defaults.
+15:15:38.590 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener, org.springframework.security.test.context.support.ReactorContextTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+15:15:38.599 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@4de41af9, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@56ace400, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@47404bea, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@305f7627, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@5d018107, org.springframework.test.context.support.DirtiesContextTestExecutionListener@6cbcf243, org.springframework.test.context.transaction.TransactionalTestExecutionListener@29e6eb25, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@62435e70, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@339bf286, org.springframework.test.context.event.EventPublishingTestExecutionListener@38be305c, org.springframework.security.test.context.support.ReactorContextTestExecutionListener@269f4bad, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@5ed731d0, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@3234f74e, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@7bc10d84, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@275fe372, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@40e10ff8, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@557a1e2d]
+15:15:38.601 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@15c25153 testClass = FsjApplicationTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@1252b961 testClass = FsjApplicationTests, locations = '{}', classes = '{class fr.polytech.bbr.fsj.FsjApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true, server.port=0}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@49c66ade, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@15713d56, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@d41f816, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@3d9c13b5, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@7a362b6b, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@31f9b85e], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; false]], class annotated with @DirtiesContext [false] with mode [null].
+15:15:38.607 [Test worker] DEBUG org.springframework.test.context.support.DependencyInjectionTestExecutionListener - Performing dependency injection for test context [[DefaultTestContext@15c25153 testClass = FsjApplicationTests, testInstance = fr.polytech.bbr.fsj.FsjApplicationTests@7c56e013, testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@1252b961 testClass = FsjApplicationTests, locations = '{}', classes = '{class fr.polytech.bbr.fsj.FsjApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true, server.port=0}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@49c66ade, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@15713d56, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@d41f816, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@3d9c13b5, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@7a362b6b, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@31f9b85e], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; false, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]].
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -111,7 +112,7 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.7.5)
 
-2022-11-16 16:45:23.688  WARN 54527 --- [    Test worker] ory$DuplicateJsonObjectContextCustomizer : 
+2022-11-24 15:15:38.768  WARN 12618 --- [    Test worker] ory$DuplicateJsonObjectContextCustomizer : 
 
 Found multiple occurrences of org.json.JSONObject on the class path:
 
@@ -120,21 +121,26 @@ Found multiple occurrences of org.json.JSONObject on the class path:
 
 You may wish to exclude one of them to ensure predictable runtime behavior
 
-2022-11-16 16:45:23.695  INFO 54527 --- [    Test worker] fr.polytech.bbr.fsj.RegistrationTests    : Starting RegistrationTests using Java 17.0.5 on Radus-MacBook-Air.local with PID 54527 (started by radubortan in /Users/radubortan/Documents/IWA/iwa_ig5_back/user_management)
-2022-11-16 16:45:23.696  INFO 54527 --- [    Test worker] fr.polytech.bbr.fsj.RegistrationTests    : No active profile set, falling back to 1 default profile: &quot;default&quot;
-2022-11-16 16:45:23.977  INFO 54527 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2022-11-16 16:45:24.007  INFO 54527 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 26 ms. Found 4 JPA repository interfaces.
-2022-11-16 16:45:24.433  INFO 54527 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2022-11-16 16:45:24.459  INFO 54527 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.12.Final
-2022-11-16 16:45:24.475  INFO 54527 --- [    Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2022-11-16 16:45:24.514  INFO 54527 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2022-11-16 16:45:24.621  INFO 54527 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2022-11-16 16:45:24.629  INFO 54527 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2022-11-24 15:15:38.775  INFO 12618 --- [    Test worker] fr.polytech.bbr.fsj.FsjApplicationTests  : Starting FsjApplicationTests using Java 17.0.5 on Radus-Air with PID 12618 (started by radubortan in /Users/radubortan/Documents/IWA/iwa_ig5_back/user_management)
+2022-11-24 15:15:38.775  INFO 12618 --- [    Test worker] fr.polytech.bbr.fsj.FsjApplicationTests  : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2022-11-24 15:15:39.084  INFO 12618 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-11-24 15:15:39.114  INFO 12618 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 26 ms. Found 4 JPA repository interfaces.
+2022-11-24 15:15:39.408  INFO 12618 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
+2022-11-24 15:15:39.414  INFO 12618 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-11-24 15:15:39.414  INFO 12618 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.68]
+2022-11-24 15:15:39.463  INFO 12618 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-11-24 15:15:39.463  INFO 12618 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 677 ms
+2022-11-24 15:15:39.602  INFO 12618 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-11-24 15:15:39.633  INFO 12618 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.12.Final
+2022-11-24 15:15:39.717  INFO 12618 --- [    Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-11-24 15:15:39.760  INFO 12618 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-11-24 15:15:39.883  INFO 12618 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-11-24 15:15:39.892  INFO 12618 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
 Hibernate: 
     
     alter table app_user_roles 
        drop constraint FK23e7b5jyl3ql41rk3566gywdd
-2022-11-16 16:45:24.838  WARN 54527 --- [    Test worker] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL &quot;
+2022-11-24 15:15:40.244  WARN 12618 --- [    Test worker] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL &quot;
     alter table app_user_roles 
        drop constraint FK23e7b5jyl3ql41rk3566gywdd&quot; via JDBC Statement
 
@@ -170,6 +176,7 @@ org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL &q
 	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154) ~[spring-context-5.3.23.jar:5.3.23]
 	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908) ~[spring-context-5.3.23.jar:5.3.23]
 	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583) ~[spring-context-5.3.23.jar:5.3.23]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147) ~[spring-boot-2.7.5.jar:2.7.5]
 	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:734) ~[spring-boot-2.7.5.jar:2.7.5]
 	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408) ~[spring-boot-2.7.5.jar:2.7.5]
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308) ~[spring-boot-2.7.5.jar:2.7.5]
@@ -177,8 +184,9 @@ org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL &q
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:141) ~[spring-test-5.3.23.jar:5.3.23]
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:90) ~[spring-test-5.3.23.jar:5.3.23]
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:124) ~[spring-test-5.3.23.jar:5.3.23]
-	at org.springframework.test.context.web.ServletTestExecutionListener.setUpRequestContextIfNecessary(ServletTestExecutionListener.java:190) ~[spring-test-5.3.23.jar:5.3.23]
-	at org.springframework.test.context.web.ServletTestExecutionListener.prepareTestInstance(ServletTestExecutionListener.java:132) ~[spring-test-5.3.23.jar:5.3.23]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:118) ~[spring-test-5.3.23.jar:5.3.23]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:83) ~[spring-test-5.3.23.jar:5.3.23]
+	at org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener.prepareTestInstance(SpringBootDependencyInjectionTestExecutionListener.java:43) ~[spring-boot-test-autoconfigure-2.7.5.jar:2.7.5]
 	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:248) ~[spring-test-5.3.23.jar:5.3.23]
 	at org.springframework.test.context.junit.jupiter.SpringExtension.postProcessTestInstance(SpringExtension.java:138) ~[spring-test-5.3.23.jar:5.3.23]
 	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$8(ClassBasedTestDescriptor.java:363) ~[junit-jupiter-engine-5.8.2.jar:5.8.2]
@@ -276,13 +284,13 @@ Caused by: org.postgresql.util.PSQLException: ERROR: relation &quot;app_user_rol
 	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-4.0.3.jar:na]
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-4.0.3.jar:na]
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54) ~[hibernate-core-5.6.12.Final.jar:5.6.12.Final]
-	... 121 common frames omitted
+	... 123 common frames omitted
 
 Hibernate: 
     
     alter table app_user_roles 
        drop constraint FKkwxexnudtp5gmt82j0qtytnoe
-2022-11-16 16:45:24.850  WARN 54527 --- [    Test worker] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL &quot;
+2022-11-24 15:15:40.253  WARN 12618 --- [    Test worker] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL &quot;
     alter table app_user_roles 
        drop constraint FKkwxexnudtp5gmt82j0qtytnoe&quot; via JDBC Statement
 
@@ -318,6 +326,7 @@ org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL &q
 	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154) ~[spring-context-5.3.23.jar:5.3.23]
 	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908) ~[spring-context-5.3.23.jar:5.3.23]
 	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583) ~[spring-context-5.3.23.jar:5.3.23]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147) ~[spring-boot-2.7.5.jar:2.7.5]
 	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:734) ~[spring-boot-2.7.5.jar:2.7.5]
 	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408) ~[spring-boot-2.7.5.jar:2.7.5]
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308) ~[spring-boot-2.7.5.jar:2.7.5]
@@ -325,8 +334,9 @@ org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL &q
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:141) ~[spring-test-5.3.23.jar:5.3.23]
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:90) ~[spring-test-5.3.23.jar:5.3.23]
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:124) ~[spring-test-5.3.23.jar:5.3.23]
-	at org.springframework.test.context.web.ServletTestExecutionListener.setUpRequestContextIfNecessary(ServletTestExecutionListener.java:190) ~[spring-test-5.3.23.jar:5.3.23]
-	at org.springframework.test.context.web.ServletTestExecutionListener.prepareTestInstance(ServletTestExecutionListener.java:132) ~[spring-test-5.3.23.jar:5.3.23]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:118) ~[spring-test-5.3.23.jar:5.3.23]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:83) ~[spring-test-5.3.23.jar:5.3.23]
+	at org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener.prepareTestInstance(SpringBootDependencyInjectionTestExecutionListener.java:43) ~[spring-boot-test-autoconfigure-2.7.5.jar:2.7.5]
 	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:248) ~[spring-test-5.3.23.jar:5.3.23]
 	at org.springframework.test.context.junit.jupiter.SpringExtension.postProcessTestInstance(SpringExtension.java:138) ~[spring-test-5.3.23.jar:5.3.23]
 	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$8(ClassBasedTestDescriptor.java:363) ~[junit-jupiter-engine-5.8.2.jar:5.8.2]
@@ -424,43 +434,43 @@ Caused by: org.postgresql.util.PSQLException: ERROR: relation &quot;app_user_rol
 	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-4.0.3.jar:na]
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-4.0.3.jar:na]
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54) ~[hibernate-core-5.6.12.Final.jar:5.6.12.Final]
-	... 121 common frames omitted
+	... 123 common frames omitted
 
 Hibernate: 
     
     drop table if exists app_user cascade
-2022-11-16 16:45:24.857  WARN 54527 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2022-11-16 16:45:24.857  WARN 54527 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : table &quot;app_user&quot; does not exist, skipping
+2022-11-24 15:15:40.264  WARN 12618 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2022-11-24 15:15:40.264  WARN 12618 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : table &quot;app_user&quot; does not exist, skipping
 Hibernate: 
     
     drop table if exists app_user_roles cascade
-2022-11-16 16:45:24.861  WARN 54527 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2022-11-16 16:45:24.862  WARN 54527 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : table &quot;app_user_roles&quot; does not exist, skipping
+2022-11-24 15:15:40.267  WARN 12618 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2022-11-24 15:15:40.267  WARN 12618 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : table &quot;app_user_roles&quot; does not exist, skipping
 Hibernate: 
     
     drop table if exists candidate cascade
-2022-11-16 16:45:24.864  WARN 54527 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2022-11-16 16:45:24.864  WARN 54527 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : table &quot;candidate&quot; does not exist, skipping
+2022-11-24 15:15:40.271  WARN 12618 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2022-11-24 15:15:40.271  WARN 12618 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : table &quot;candidate&quot; does not exist, skipping
 Hibernate: 
     
     drop table if exists employer cascade
-2022-11-16 16:45:24.867  WARN 54527 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2022-11-16 16:45:24.868  WARN 54527 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : table &quot;employer&quot; does not exist, skipping
+2022-11-24 15:15:40.276  WARN 12618 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2022-11-24 15:15:40.276  WARN 12618 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : table &quot;employer&quot; does not exist, skipping
 Hibernate: 
     
     drop table if exists role cascade
-2022-11-16 16:45:24.869  WARN 54527 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2022-11-16 16:45:24.870  WARN 54527 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : table &quot;role&quot; does not exist, skipping
+2022-11-24 15:15:40.281  WARN 12618 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2022-11-24 15:15:40.281  WARN 12618 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : table &quot;role&quot; does not exist, skipping
 Hibernate: 
     
     drop sequence if exists hibernate_sequence
-2022-11-16 16:45:24.872  WARN 54527 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2022-11-16 16:45:24.872  WARN 54527 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : sequence &quot;hibernate_sequence&quot; does not exist, skipping
+2022-11-24 15:15:40.285  WARN 12618 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2022-11-24 15:15:40.286  WARN 12618 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : sequence &quot;hibernate_sequence&quot; does not exist, skipping
 Hibernate: create sequence hibernate_sequence start 1 increment 1
 Hibernate: 
     
     create table app_user (
-       id int8 not null,
+       id varchar(255) not null,
         email varchar(255),
         enabled boolean,
         locked boolean,
@@ -470,13 +480,13 @@ Hibernate:
 Hibernate: 
     
     create table app_user_roles (
-       app_user_id int8 not null,
+       app_user_id varchar(255) not null,
         roles_id int8 not null
     )
 Hibernate: 
     
     create table candidate (
-       id int8 not null,
+       id varchar(255) not null,
         birthday date,
         cv_keywords varchar(255),
         first_name varchar(255),
@@ -488,7 +498,7 @@ Hibernate:
 Hibernate: 
     
     create table employer (
-       id int8 not null,
+       id varchar(255) not null,
         address varchar(255),
         company_name varchar(255),
         phone_number varchar(255),
@@ -513,14 +523,12 @@ Hibernate:
        add constraint FKkwxexnudtp5gmt82j0qtytnoe 
        foreign key (app_user_id) 
        references app_user
-2022-11-16 16:45:24.920  INFO 54527 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2022-11-16 16:45:24.924  INFO 54527 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2022-11-16 16:45:25.213  WARN 54527 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2022-11-16 16:45:25.303  INFO 54527 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5354bfce, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@74901d7, org.springframework.security.web.context.SecurityContextPersistenceFilter@7c013560, org.springframework.security.web.header.HeaderWriterFilter@3b850bb7, org.springframework.security.web.authentication.logout.LogoutFilter@6a6e410c, fr.polytech.bbr.fsj.filter.CustomAuthorisationFilter@3146f3d7, fr.polytech.bbr.fsj.filter.CustomAuthenticationFilter@4220468, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@64f2b1b4, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1f370472, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@727e61ed, org.springframework.security.web.session.SessionManagementFilter@29693b1d, org.springframework.security.web.access.ExceptionTranslationFilter@23d07ad3, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7d1cfe97]
-2022-11-16 16:45:25.618  INFO 54527 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2022-11-16 16:45:25.618  INFO 54527 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2022-11-16 16:45:25.618  INFO 54527 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
-2022-11-16 16:45:25.629  INFO 54527 --- [    Test worker] fr.polytech.bbr.fsj.RegistrationTests    : Started RegistrationTests in 2.202 seconds (JVM running for 2.679)
+2022-11-24 15:15:40.385  INFO 12618 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-11-24 15:15:40.390  INFO 12618 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-11-24 15:15:40.685  WARN 12618 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-11-24 15:15:40.782  INFO 12618 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1512efe9, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7cc7e441, org.springframework.security.web.context.SecurityContextPersistenceFilter@22a1d77b, org.springframework.security.web.header.HeaderWriterFilter@4ac0fdc7, org.springframework.security.web.authentication.logout.LogoutFilter@33986be7, fr.polytech.bbr.fsj.filter.CustomAuthorisationFilter@bb1b872, fr.polytech.bbr.fsj.filter.CustomAuthenticationFilter@64245ca9, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2604940, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@da5b46f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@66cb9a63, org.springframework.security.web.session.SessionManagementFilter@3f1e18b1, org.springframework.security.web.access.ExceptionTranslationFilter@755033c5, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7f9b851c]
+2022-11-24 15:15:41.032  INFO 12618 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 49763 (http) with context path ''
+2022-11-24 15:15:41.037  INFO 12618 --- [    Test worker] fr.polytech.bbr.fsj.FsjApplicationTests  : Started FsjApplicationTests in 2.418 seconds (JVM running for 2.928)
 Hibernate: 
     select
         nextval ('hibernate_sequence')
@@ -541,6 +549,153 @@ Hibernate:
         (name, id) 
     values
         (?, ?)
+Hibernate: 
+    select
+        appuser0_.id as id1_0_,
+        appuser0_.email as email2_0_,
+        appuser0_.enabled as enabled3_0_,
+        appuser0_.locked as locked4_0_,
+        appuser0_.password as password5_0_ 
+    from
+        app_user appuser0_ 
+    where
+        appuser0_.email=?
+Hibernate: 
+    select
+        appuser0_.id as id1_0_0_,
+        appuser0_.email as email2_0_0_,
+        appuser0_.enabled as enabled3_0_0_,
+        appuser0_.locked as locked4_0_0_,
+        appuser0_.password as password5_0_0_ 
+    from
+        app_user appuser0_ 
+    where
+        appuser0_.id=?
+Hibernate: 
+    insert 
+    into
+        app_user
+        (email, enabled, locked, password, id) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    select
+        appuser0_.id as id1_0_,
+        appuser0_.email as email2_0_,
+        appuser0_.enabled as enabled3_0_,
+        appuser0_.locked as locked4_0_,
+        appuser0_.password as password5_0_ 
+    from
+        app_user appuser0_ 
+    where
+        appuser0_.email=?
+Hibernate: 
+    select
+        role0_.id as id1_4_,
+        role0_.name as name2_4_ 
+    from
+        role role0_ 
+    where
+        role0_.name=?
+Hibernate: 
+    insert 
+    into
+        app_user_roles
+        (app_user_id, roles_id) 
+    values
+        (?, ?)
+Hibernate: 
+    select
+        appuser0_.id as id1_0_,
+        appuser0_.email as email2_0_,
+        appuser0_.enabled as enabled3_0_,
+        appuser0_.locked as locked4_0_,
+        appuser0_.password as password5_0_ 
+    from
+        app_user appuser0_ 
+    where
+        appuser0_.email=?
+Hibernate: 
+    select
+        appuser0_.id as id1_0_0_,
+        appuser0_.email as email2_0_0_,
+        appuser0_.enabled as enabled3_0_0_,
+        appuser0_.locked as locked4_0_0_,
+        appuser0_.password as password5_0_0_ 
+    from
+        app_user appuser0_ 
+    where
+        appuser0_.id=?
+Hibernate: 
+    insert 
+    into
+        app_user
+        (email, enabled, locked, password, id) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    select
+        appuser0_.id as id1_0_,
+        appuser0_.email as email2_0_,
+        appuser0_.enabled as enabled3_0_,
+        appuser0_.locked as locked4_0_,
+        appuser0_.password as password5_0_ 
+    from
+        app_user appuser0_ 
+    where
+        appuser0_.email=?
+Hibernate: 
+    select
+        role0_.id as id1_4_,
+        role0_.name as name2_4_ 
+    from
+        role role0_ 
+    where
+        role0_.name=?
+Hibernate: 
+    insert 
+    into
+        app_user_roles
+        (app_user_id, roles_id) 
+    values
+        (?, ?)
+Hibernate: 
+    select
+        employer0_.id as id1_3_0_,
+        employer0_.address as address2_3_0_,
+        employer0_.company_name as company_3_3_0_,
+        employer0_.phone_number as phone_nu4_3_0_ 
+    from
+        employer employer0_ 
+    where
+        employer0_.id=?
+Hibernate: 
+    insert 
+    into
+        employer
+        (address, company_name, phone_number, id) 
+    values
+        (?, ?, ?, ?)
+Hibernate: 
+    select
+        candidate0_.id as id1_2_0_,
+        candidate0_.birthday as birthday2_2_0_,
+        candidate0_.cv_keywords as cv_keywo3_2_0_,
+        candidate0_.first_name as first_na4_2_0_,
+        candidate0_.last_name as last_nam5_2_0_,
+        candidate0_.link_cv as link_cv6_2_0_,
+        candidate0_.phone_number as phone_nu7_2_0_ 
+    from
+        candidate candidate0_ 
+    where
+        candidate0_.id=?
+Hibernate: 
+    insert 
+    into
+        candidate
+        (birthday, cv_keywords, first_name, last_name, link_cv, phone_number, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?)
 </pre>
 </span>
 </div>
@@ -552,7 +707,7 @@ Hibernate:
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 7.5.1</a> at Nov 16, 2022, 4:45:25 PM</p>
+<a href="http://www.gradle.org">Gradle 7.5.1</a> at Nov 24, 2022, 3:15:41 PM</p>
 </div>
 </div>
 </body>

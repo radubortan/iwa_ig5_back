@@ -25,7 +25,13 @@ public class AppUserController {
     private final CandidateService candidateService;
     private final EmployerService employerService;
 
-    //for an employer to update their profile info
+    /**
+     * For an employer to update their profile information
+     * @param id the employer id
+     * @param employer an employer object with the new information
+     * @param jwt token for authorisation
+     * @return the updated employer
+     */
     @PutMapping("/users/employer/{id}/update")
     public ResponseEntity<Employer> updateEmployerInfo(@PathVariable String id, @RequestBody Employer employer, @RequestHeader(AUTHORIZATION) String jwt) {
         try {
@@ -46,7 +52,14 @@ public class AppUserController {
         }
     }
 
-    //for a candidate to update their profile info
+
+    /**
+     * For a candidate to update their profile information
+     * @param id the candidate id
+     * @param candidate a candidate object with the new information
+     * @param jwt token for authorisation
+     * @return the updated candidate
+     */
     @PutMapping("/users/candidate/{id}/update")
     public ResponseEntity<Candidate> updateCandidateInfo(@PathVariable String id, @RequestBody Candidate candidate, @RequestHeader(AUTHORIZATION) String jwt) {
         try {
@@ -67,7 +80,11 @@ public class AppUserController {
         }
     }
 
-    //for an employer to get their id
+    /**
+     * For an employer to get their id
+     * @param jwt token for authorisation
+     * @return the id of the employer
+     */
     @GetMapping("/users/employer/id")
     public ResponseEntity<String> getEmployerId(@RequestHeader(AUTHORIZATION) String jwt) {
         try {
@@ -88,7 +105,11 @@ public class AppUserController {
         }
     }
 
-    //for a candidate to get their id
+    /**
+     * For a candidate to get their id
+     * @param jwt token for authorisation
+     * @return the id of the candidate
+     */
     @GetMapping("/users/candidate/id")
     public ResponseEntity<String> getCandidateId(@RequestHeader(AUTHORIZATION) String jwt) {
         try {
@@ -109,31 +130,50 @@ public class AppUserController {
         }
     }
 
-    //get info of an employer by their id
+    /**
+     * Get information about an employer by their id
+     * @param id the id of the employer
+     * @return the employer
+     */
     @GetMapping("/users/employer/{id}")
     public ResponseEntity<Employer> getEmployerById(@PathVariable String id) {
         return ResponseEntity.ok().body(employerService.getEmployerById(id));
     }
 
-    //get info about candidate by their id
+    /**
+     * Get information about a candidate by their id
+     * @param id the id of the candidate
+     * @return the candidate
+     */
     @GetMapping("/users/candidate/{id}")
     public ResponseEntity<Candidate> getCandidateById(@PathVariable String id) {
         return ResponseEntity.ok().body(candidateService.getCandidateById(id));
     }
 
-    //get the role of a user by their id
+    /**
+     * Get the role of a user
+     * @param id the id of the employer
+     * @return the role
+     */
     @GetMapping("/users/{id}/role")
-    public ResponseEntity<Role> getEmployerRole(@PathVariable String id) {
+    public ResponseEntity<Role> getRole(@PathVariable String id) {
         return ResponseEntity.ok().body(appUserService.getRole(id));
     }
 
-    //get all candidates
+    /**
+     * Get all candidates
+     * @return A list of all the candidates
+     */
     @GetMapping("/users/candidates")
     public ResponseEntity<List<Candidate>> getCandidates() {
         return ResponseEntity.ok().body(candidateService.getCandidates());
     }
 
-    //get the cv link given a candidate id
+    /**
+     * Get the CV link of a candidate given their id
+     * @param idCandidate the id of the candidate
+     * @return the CV link
+     */
     @GetMapping("/users/candidate/{idCandidate}/cv_link")
     public ResponseEntity<String> getCvLink(@PathVariable String idCandidate) {
         try {
@@ -144,7 +184,11 @@ public class AppUserController {
         }
     }
 
-    //get the cv keywords given a candidate id
+    /**
+     * Get the CV keywords of a candidate given their id
+     * @param idCandidate the id of the candidate
+     * @return the CV keywords
+     */
     @GetMapping("/users/candidate/{idCandidate}/cv_keywords")
     public ResponseEntity<String> getCvKeywords(@PathVariable String idCandidate) {
         try {
@@ -155,7 +199,13 @@ public class AppUserController {
         }
     }
 
-    //for a candidate to update their cv link
+    /**
+     * Update the CV link of a candidate
+     * @param idCandidate id of the candidate whose CV link to update
+     * @param cvLink the new CV link
+     * @param jwt token for authorisation
+     * @return the new CV link
+     */
     @PutMapping("/users/candidate/{idCandidate}/cv_link")
     public ResponseEntity<String> updateCvLink(@PathVariable String idCandidate, @RequestBody String cvLink, @RequestHeader(AUTHORIZATION) String jwt) {
         JWTDecryption jwtDecryption = new JWTDecryption(jwt);
@@ -178,7 +228,13 @@ public class AppUserController {
 
     }
 
-    //for a candidate to update their cv keywords
+    /**
+     * Update the CV keywords of a candidate
+     * @param idCandidate id of the candidate whose CV keywords to update
+     * @param cvKeywords the new CV keywords
+     * @param jwt token for authorisation
+     * @return the new CV keywords
+     */
     @PutMapping("/users/candidate/{idCandidate}/cv_keywords")
     public ResponseEntity<String> updateCvKeywords(@PathVariable String idCandidate, @RequestBody String cvKeywords, @RequestHeader(AUTHORIZATION) String jwt) {
         JWTDecryption jwtDecryption = new JWTDecryption(jwt);
