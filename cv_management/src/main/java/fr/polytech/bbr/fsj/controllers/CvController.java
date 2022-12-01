@@ -94,4 +94,30 @@ public class CvController {
         }
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
+    @PostMapping("/cv-keywords/{id}")
+    public ResponseEntity<Candidate> addKeywords(@PathVariable("id") String id, @RequestParam("keywords") String keywords) {
+        Optional<Candidate> candidateData = candidateRepo.findById(id);
+        if(candidateData.isPresent()){
+            Candidate _candidate = candidateData.get();
+            _candidate.setCvKeywords(keywords);
+            return new ResponseEntity<>(candidateRepo.save(_candidate), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping("/get-cv-keywords/{id}")
+    public ResponseEntity<String> getKeywords(@PathVariable("id") String id) {
+        Optional<Candidate> candidateData = candidateRepo.findById(id);
+        if(candidateData.isPresent()){
+            Candidate _candidate = candidateData.get();
+            String keywords = _candidate.getCvKeywords();
+            return new ResponseEntity<>(keywords, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
 }
