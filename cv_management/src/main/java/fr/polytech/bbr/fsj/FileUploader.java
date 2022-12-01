@@ -15,7 +15,7 @@ public class FileUploader {
     public FileUploader() {
         minioClient = MinioClient.builder()
                 .endpoint("http://127.0.0.1:9000")
-                .credentials("fb2EfCpRCZahpGZL", "Fg5EkoVTSOqCqBHNcY9TecpIWRMWrkiW")
+                .credentials("puYbUOI39lUSk8cA", "xO8bXAySpaazZtsC0GexGtBISfVosuvv")
                 .build();
     }
 

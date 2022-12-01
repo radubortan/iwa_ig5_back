@@ -10,19 +10,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/api")
 public class JobOfferController {
 
     @Autowired
     private JobOfferService jobOfferService;
-
-    @Autowired
-    private KafkaTemplate<String, JobOffer> kafkaTemplate;
-
-    public JobOfferController(KafkaTemplate<String, JobOffer> kafkaTemplate){
-        this.kafkaTemplate = kafkaTemplate;
-    }
 
     /**
      * Read - Get job offer by id
@@ -57,7 +49,6 @@ public class JobOfferController {
      */
     @PostMapping ("/job-offers")
     public JobOffer saveJobOffer(@RequestBody final JobOffer jobOffer) {
-        this.kafkaTemplate.send("job_offer", jobOffer);
         return jobOfferService.saveJobOffer(jobOffer);
     }
 
