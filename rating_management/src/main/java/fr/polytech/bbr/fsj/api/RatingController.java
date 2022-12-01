@@ -51,7 +51,8 @@ public class RatingController {
      */
    @PostMapping("/ratings/new")
     public ResponseEntity<String> postRating(@RequestBody RatingRequest request, @RequestHeader(AUTHORIZATION) String jwt) {
-        try {
+       System.out.println("Post");
+       try {
            JWTDecryption jwtDecryption = new JWTDecryption(jwt);
            String idSender = jwtDecryption.getAccountId();
 

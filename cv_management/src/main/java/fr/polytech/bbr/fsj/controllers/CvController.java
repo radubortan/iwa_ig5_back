@@ -27,13 +27,13 @@ import static org.springframework.http.HttpStatus.OK;
 
 
 @RestController
+@RequestMapping("/api/cvs")
 public class CvController {
 
     @Autowired
     CandidateRepo candidateRepo;
 
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/cv-upload/{id}")
     public ResponseEntity<Candidate> uploadCV(@PathVariable("id") String id, @RequestParam("file") MultipartFile file) throws IOException, NoSuchAlgorithmException, InvalidKeyException {
         Optional<Candidate> candidateData = candidateRepo.findById(id);
@@ -57,7 +57,6 @@ public class CvController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/cv-view")
     public ResponseEntity<InputStreamResource> viewCV(@RequestParam("fileName") String fileName) {
         FileUploader fileUploader = new FileUploader();
@@ -76,7 +75,6 @@ public class CvController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/cv-delete/{id}")
     public ResponseEntity<String> deleteCV(@PathVariable("id") String id, @RequestParam("fileName") String fileName) {
         Optional<Candidate> candidateData = candidateRepo.findById(id);
@@ -94,7 +92,6 @@ public class CvController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/cv-keywords/{id}")
     public ResponseEntity<Candidate> addKeywords(@PathVariable("id") String id, @RequestParam("keywords") String keywords) {
         Optional<Candidate> candidateData = candidateRepo.findById(id);
@@ -107,7 +104,6 @@ public class CvController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/get-cv-keywords/{id}")
     public ResponseEntity<String> getKeywords(@PathVariable("id") String id) {
         Optional<Candidate> candidateData = candidateRepo.findById(id);
@@ -120,4 +116,15 @@ public class CvController {
         }
     }
 
+    @GetMapping("/get-filename/{id}")
+    public ResponseEntity<String> getFileName(@PathVariable("id") String id) {
+        Optional<Candidate> candidateData = candidateRepo.findById(id);
+        if(candidateData.isPresent()){
+            Candidate _candidate = candidateData.get();
+            String fileName = _candidate.getLinkCv();
+            return new ResponseEntity<>(fileName, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 }

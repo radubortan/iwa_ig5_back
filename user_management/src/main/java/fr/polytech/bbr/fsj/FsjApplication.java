@@ -29,7 +29,7 @@ public class FsjApplication {
 			appUserService.saveUser(new AppUser("1", "radu.bortan@etu.umontpellier.fr", "password"), "ROLE_EMPLOYER");
 			appUserService.saveUser(new AppUser("2", "bortanradu@gmail.com", "password"), "ROLE_CANDIDATE");
 			employerService.saveEmployer(new Employer("1", "Polytech", "Montpellier", "0606515270"));
-			candidateService.saveCandidate(new Candidate("2", "Bortan", "Radu", LocalDate.of(2000, 1, 11), "0603507066", "1234", "react, angular"));
+			candidateService.saveCandidate(new Candidate("2", "Bortan", "Radu", LocalDate.of(2000, 1, 11), "0603507066", "1234", "react;angular"));
 		};
 	}
 

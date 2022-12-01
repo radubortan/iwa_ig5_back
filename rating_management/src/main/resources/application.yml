@@ -1,8 +1,8 @@
 server:
-  port: ${PORT}
   error:
     include-message: always
     include-binding-errors: always
+  port: ${PORT}
 
 spring:
   datasource:
