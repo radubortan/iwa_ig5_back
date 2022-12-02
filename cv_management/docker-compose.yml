@@ -1,0 +1,27 @@
+version: '3'
+services:
+  postgres:
+    image: library/postgres:13.0-alpine
+    container_name: postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - ./sql/init_cv.sql:/docker-entrypoint-initdb.d/init_cv.sql
+    environment:
+      POSTGRES_USER: fsj
+      POSTGRES_PASSWORD: fsjAdmin2022
+      POSTGRES_DB: default_database
+  minio:
+    image: quay.io/minio/minio:latest
+    volumes:
+        - ./var/data/minio:/data
+    container_name: minio
+    ports:
+      - 9000:9000
+      - 9001:9001
+    environment:
+      MINIO_ROOT_USER: ROOTUSER
+      MINIO_ROOT_PASSWORD: CHANGEME123
+    command: server --console-address ":9001" /data
+
+
