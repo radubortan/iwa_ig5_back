@@ -2,7 +2,7 @@ services:
   postgres:
     container_name: postgres_db
     ports:
-      - "5400:5432"
+      - "5432:5432"
     image: library/postgres:13.0-alpine
     volumes:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
