@@ -15,10 +15,10 @@ import org.springframework.context.annotation.Bean;
 import java.time.LocalDate;
 
 @SpringBootApplication
-public class FsjApplication {
+public class UserManagementApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FsjApplication.class, args);
+		SpringApplication.run(UserManagementApplication.class, args);
 	}
 
 	@Bean

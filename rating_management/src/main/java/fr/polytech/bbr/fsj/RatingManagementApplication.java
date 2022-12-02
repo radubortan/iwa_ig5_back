@@ -8,10 +8,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-public class FsjApplication {
+public class RatingManagementApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FsjApplication.class, args);
+		SpringApplication.run(RatingManagementApplication.class, args);
 	}
 
 	@Bean

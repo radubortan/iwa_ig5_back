@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class FsjApplication {
+public class CvManagementApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FsjApplication.class, args);
+		SpringApplication.run(CvManagementApplication.class, args);
 	}
 
 }
